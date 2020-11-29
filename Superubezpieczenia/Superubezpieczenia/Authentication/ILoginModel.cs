@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Authentication
 {
-    public class LoginModel
+    public interface ILoginModel
     {
         [Required(ErrorMessage = "Nazwa użytkownika jest wymagana")]
         public string Username { get; set; }

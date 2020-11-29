@@ -1,4 +1,5 @@
 ﻿
+using Superubezpieczenia.Authentication;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -12,7 +13,7 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDForm { get; set; }
-        public int IDUser { get; set; }
+        public string IDUser { get; set; }
         public int IDAuto { get; set; }
         [ForeignKey("IDUser")]
         public virtual User User { get; set; }

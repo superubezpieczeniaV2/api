@@ -16,7 +16,12 @@ using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
 using Superubezpieczenia.Authentication;
+using Superubezpieczenia.Domain.Models;
+using Superubezpieczenia.Domain.Repositories;
+using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Persistence.Context;
+using Superubezpieczenia.Persistence.Repositories;
+using Superubezpieczenia.Services;
 
 namespace Superubezpieczenia
 {
@@ -48,7 +53,7 @@ namespace Superubezpieczenia
                 options.UseSqlServer(Configuration.GetConnectionString("SuperubezpieczeniaDbContext"));
             });
             // For Identity  
-            services.AddIdentity<ApplicationUser, IdentityRole>()
+            services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()
                 .AddDefaultTokenProviders();
 
@@ -74,6 +79,8 @@ namespace Superubezpieczenia
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                 };
             });
+            services.AddScoped<ICarServices, CarService>();
+            services.AddScoped<ICarRepository, CarRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

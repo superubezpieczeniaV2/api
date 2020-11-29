@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Superubezpieczenia.Authentication;
+using Superubezpieczenia.Domain.Models;
 using System;
 using System.Collections.Generic;
 using System.IdentityModel.Tokens.Jwt;
@@ -18,11 +19,11 @@ namespace Superubezpieczenia.Controllers
     [ApiController]
     public class AuthenticateController : ControllerBase
     {
-        private readonly UserManager<ApplicationUser> userManager;
+        private readonly UserManager<User> userManager;
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration _configuration;
 
-        public AuthenticateController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
+        public AuthenticateController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
@@ -31,7 +32,7 @@ namespace Superubezpieczenia.Controllers
 
         [HttpPost]
         [Route("login")]
-        public async Task<IActionResult> Login([FromBody] LoginModel model)
+        public async Task<IActionResult> Login([FromBody] ILoginModel model)
         {
             var user = await userManager.FindByNameAsync(model.Username);
             if (user != null && await userManager.CheckPasswordAsync(user, model.Password))
@@ -68,15 +69,18 @@ namespace Superubezpieczenia.Controllers
             return Unauthorized();
         }
 
+
+
+
         [HttpPost]
         [Route("register")]
-        public async Task<IActionResult> Register([FromBody] RegisterModel model)
+        public async Task<IActionResult> Register([FromBody] IRegisterModel model)
         {
             var userExists = await userManager.FindByNameAsync(model.Username);
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Użytkownik już istnieje!" });
 
-            ApplicationUser user = new ApplicationUser()
+            User user = new User()
             {
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
@@ -84,20 +88,25 @@ namespace Superubezpieczenia.Controllers
             };
             var result = await userManager.CreateAsync(user, model.Password);
             if (!result.Succeeded)
+            {
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Nie udało się stworzyć użytkownika! Proszę sprawdzić poprawność danych i spróbować ponownie." });
+            }
+               
 
             return Ok(new Response { Status = "Success", Message = "Użytkownik został stworzony!" });
         }
 
+
+
         [HttpPost]
         [Route("register-admin")]
-        public async Task<IActionResult> RegisterAdmin([FromBody] RegisterModel model)
+        public async Task<IActionResult> RegisterAdmin([FromBody] IRegisterModel model)
         {
             var userExists = await userManager.FindByNameAsync(model.Username);
             if (userExists != null)
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Użytkownik już istnieje!" });
 
-            ApplicationUser user = new ApplicationUser()
+            User user = new User()
             {
                 Email = model.Email,
                 SecurityStamp = Guid.NewGuid().ToString(),
@@ -109,6 +118,8 @@ namespace Superubezpieczenia.Controllers
 
             if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
                 await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+            if (!await roleManager.RoleExistsAsync(UserRoles.Agent))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.Agent));
             if (!await roleManager.RoleExistsAsync(UserRoles.User))
                 await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
 
@@ -117,7 +128,43 @@ namespace Superubezpieczenia.Controllers
                 await userManager.AddToRoleAsync(user, UserRoles.Admin);
             }
 
-            return Ok(new Response { Status = "Success", Message = "UUżytkownik został stworzony!" });
+            return Ok(new Response { Status = "Success", Message = "Użytkownik został stworzony!" });
+        }
+
+
+
+
+        [HttpPost]
+        [Route("register-agent")]
+        public async Task<IActionResult> RegisterAgent([FromBody] IRegisterModel model)
+        {
+            var userExists = await userManager.FindByNameAsync(model.Username);
+            if (userExists != null)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Użytkownik już istnieje!" });
+
+            User user = new User()
+            {
+                Email = model.Email,
+                SecurityStamp = Guid.NewGuid().ToString(),
+                UserName = model.Username
+            };
+            var result = await userManager.CreateAsync(user, model.Password);
+            if (!result.Succeeded)
+                return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Nie udało się stworzyć użytkownika! Proszę sprawdzić poprawność danych i spróbować ponownie." });
+
+            if (!await roleManager.RoleExistsAsync(UserRoles.Agent))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.Agent));
+            if (!await roleManager.RoleExistsAsync(UserRoles.Admin))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.Admin));
+            if (!await roleManager.RoleExistsAsync(UserRoles.User))
+                await roleManager.CreateAsync(new IdentityRole(UserRoles.User));
+
+            if (await roleManager.RoleExistsAsync(UserRoles.Agent))
+            {
+                await userManager.AddToRoleAsync(user, UserRoles.Agent);
+            }
+
+            return Ok(new Response { Status = "Success", Message = "Użytkownik został stworzony!" });
         }
     }
 }

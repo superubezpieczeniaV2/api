@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using Superubezpieczenia.Authentication;
+using Superubezpieczenia.Persistence.Context;
 
 namespace Superubezpieczenia.Migrations
 {
@@ -150,7 +150,269 @@ namespace Superubezpieczenia.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("Superubezpieczenia.Authentication.ApplicationUser", b =>
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Car", b =>
+                {
+                    b.Property<int>("IDAuto")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<bool>("BroughtBack")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("CurrentMileage")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExtraDrivers")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FirstRegistration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IDEnginePower")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDMethodUse")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDModel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDParkingPlace")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDTypeFuel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDTypeOwner")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("LocationDriver")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PlannedMileage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SinceWhenInsurance")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("YearProduction")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("IDAuto");
+
+                    b.HasIndex("IDEnginePower");
+
+                    b.HasIndex("IDMethodUse");
+
+                    b.HasIndex("IDModel");
+
+                    b.HasIndex("IDParkingPlace");
+
+                    b.HasIndex("IDTypeFuel");
+
+                    b.HasIndex("IDTypeOwner");
+
+                    b.ToTable("Cars");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.EnginePower", b =>
+                {
+                    b.Property<int>("IDenginePower")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<double>("Capacity")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Power")
+                        .HasColumnType("float");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.HasKey("IDenginePower");
+
+                    b.ToTable("EnginePowers");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Form", b =>
+                {
+                    b.Property<int>("IDForm")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("IDAuto")
+                        .HasColumnType("int");
+
+                    b.Property<string>("IDUser")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.HasKey("IDForm");
+
+                    b.HasIndex("IDAuto");
+
+                    b.HasIndex("IDUser");
+
+                    b.ToTable("Forms");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Mark", b =>
+                {
+                    b.Property<int>("IDMark")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.HasKey("IDMark");
+
+                    b.ToTable("Marks");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.MethodUse", b =>
+                {
+                    b.Property<int>("IDMethodUse")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Method")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.HasKey("IDMethodUse");
+
+                    b.ToTable("MethodUses");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Model", b =>
+                {
+                    b.Property<int>("IDModel")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("IDMark")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IDModel");
+
+                    b.HasIndex("IDMark");
+
+                    b.ToTable("Models");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.ParkingPlace", b =>
+                {
+                    b.Property<int>("IDParkingPlace")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Place")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("value")
+                        .HasColumnType("float");
+
+                    b.HasKey("IDParkingPlace");
+
+                    b.ToTable("ParkingPlaces");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Policy", b =>
+                {
+                    b.Property<int>("IDPolicy")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<DateTime>("EndDate")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IDForm")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDPriceList")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("StartDate")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("IDPolicy");
+
+                    b.HasIndex("IDForm");
+
+                    b.HasIndex("IDPriceList");
+
+                    b.ToTable("Policies");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.PriceList", b =>
+                {
+                    b.Property<int>("IDPriceList")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<double>("Price")
+                        .HasColumnType("float");
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IDPriceList");
+
+                    b.ToTable("PriceLists");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.TypeFuel", b =>
+                {
+                    b.Property<int>("IDTypeFuel")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
+
+                    b.HasKey("IDTypeFuel");
+
+                    b.ToTable("TypeFuels");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.TypeOwner", b =>
+                {
+                    b.Property<int>("IDTypeOwner")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<string>("Type")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<double>("Value")
+                        .HasColumnType("float");
+
+                    b.HasKey("IDTypeOwner");
+
+                    b.ToTable("TypeOwners");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.User", b =>
                 {
                     b.Property<string>("Id")
                         .HasColumnType("nvarchar(450)");
@@ -175,6 +437,9 @@ namespace Superubezpieczenia.Migrations
                     b.Property<DateTimeOffset?>("LockoutEnd")
                         .HasColumnType("datetimeoffset");
 
+                    b.Property<string>("Name")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("NormalizedEmail")
                         .HasMaxLength(256)
                         .HasColumnType("nvarchar(256)");
@@ -193,6 +458,9 @@ namespace Superubezpieczenia.Migrations
                         .HasColumnType("bit");
 
                     b.Property<string>("SecurityStamp")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Surname")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("TwoFactorEnabled")
@@ -226,7 +494,7 @@ namespace Superubezpieczenia.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
                 {
-                    b.HasOne("Superubezpieczenia.Authentication.ApplicationUser", null)
+                    b.HasOne("Superubezpieczenia.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -235,7 +503,7 @@ namespace Superubezpieczenia.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
-                    b.HasOne("Superubezpieczenia.Authentication.ApplicationUser", null)
+                    b.HasOne("Superubezpieczenia.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -250,7 +518,7 @@ namespace Superubezpieczenia.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Superubezpieczenia.Authentication.ApplicationUser", null)
+                    b.HasOne("Superubezpieczenia.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
@@ -259,11 +527,159 @@ namespace Superubezpieczenia.Migrations
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>
                 {
-                    b.HasOne("Superubezpieczenia.Authentication.ApplicationUser", null)
+                    b.HasOne("Superubezpieczenia.Domain.Models.User", null)
                         .WithMany()
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Car", b =>
+                {
+                    b.HasOne("Superubezpieczenia.Domain.Models.EnginePower", "EnginePower")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDEnginePower")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.MethodUse", "MethodUse")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDMethodUse")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.Model", "Model")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDModel")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.ParkingPlace", "ParkingPlace")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDParkingPlace")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.TypeFuel", "TypeFuel")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDTypeFuel")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.TypeOwner", "TypeOwner")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDTypeOwner")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EnginePower");
+
+                    b.Navigation("MethodUse");
+
+                    b.Navigation("Model");
+
+                    b.Navigation("ParkingPlace");
+
+                    b.Navigation("TypeFuel");
+
+                    b.Navigation("TypeOwner");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Form", b =>
+                {
+                    b.HasOne("Superubezpieczenia.Domain.Models.Car", "Car")
+                        .WithMany("Forms")
+                        .HasForeignKey("IDAuto")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.User", "User")
+                        .WithMany()
+                        .HasForeignKey("IDUser");
+
+                    b.Navigation("Car");
+
+                    b.Navigation("User");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Model", b =>
+                {
+                    b.HasOne("Superubezpieczenia.Domain.Models.Mark", "Mark")
+                        .WithMany("Models")
+                        .HasForeignKey("IDMark")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Mark");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Policy", b =>
+                {
+                    b.HasOne("Superubezpieczenia.Domain.Models.Form", "Form")
+                        .WithMany("Policies")
+                        .HasForeignKey("IDForm")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.PriceList", "PriceList")
+                        .WithMany("Policies")
+                        .HasForeignKey("IDPriceList")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Form");
+
+                    b.Navigation("PriceList");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Car", b =>
+                {
+                    b.Navigation("Forms");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.EnginePower", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Form", b =>
+                {
+                    b.Navigation("Policies");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Mark", b =>
+                {
+                    b.Navigation("Models");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.MethodUse", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Model", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.ParkingPlace", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.PriceList", b =>
+                {
+                    b.Navigation("Policies");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.TypeFuel", b =>
+                {
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.TypeOwner", b =>
+                {
+                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }
