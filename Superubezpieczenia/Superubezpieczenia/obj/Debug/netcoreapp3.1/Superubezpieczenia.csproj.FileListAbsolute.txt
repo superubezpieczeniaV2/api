@@ -71,3 +71,7 @@ D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\Microsoft.E
 D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
 D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Authentication.JwtBearer.dll
 D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.csproj.CoreCompileInputs.cache
+D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cs
+D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cache

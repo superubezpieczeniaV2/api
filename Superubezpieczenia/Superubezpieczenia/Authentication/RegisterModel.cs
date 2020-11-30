@@ -6,13 +6,11 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Authentication
 {
-    public interface IRegisterModel
+    public class RegisterModel
     {
         [Required(ErrorMessage = "Nazwa użytkownika jest wymagana")]
         public string Username { get; set; }
-        public string Name { get; set; }
-        public string Surname { get; set; }
-        public string PhoneNumber { get; set; }
+
         [EmailAddress]
         [Required(ErrorMessage = "Email jest wymagany")]
         public string Email { get; set; }
