@@ -14,11 +14,11 @@ namespace Superubezpieczenia.Domain.Models
         [Key]
         public int IDForm { get; set; }
         public string IDUser { get; set; }
-        public int IDAuto { get; set; }
+        public int IDPolicyDetails { get; set; }
         [ForeignKey("IDUser")]
         public virtual User User { get; set; }
-        [ForeignKey("IDAuto")]
-        public virtual Car Car { get; set; }
-        public virtual ICollection<Policy> Policies { get; set; }
+        [ForeignKey("IDPolicyDetails")]
+        public virtual PolicyDetails PolicyDetails { get; set; }
+        public virtual ICollection<Insurance> Policies { get; set; }
     }
 }

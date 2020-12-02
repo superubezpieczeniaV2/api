@@ -136,7 +136,7 @@ namespace Superubezpieczenia.Controllers
 
         [HttpPost]
         [Route("register-agent")]
-        public async Task<IActionResult> RegisterAgent([FromBody] RegisterModel model)
+        public async Task<IActionResult> RegisterAgent([FromBody]  RegisterModel model)
         {
             var userExists = await userManager.FindByNameAsync(model.Username);
             if (userExists != null)

@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Domain.Repositories
 {
-    public interface ICarRepository
+    public interface IMarkRepository
     {
-        Task<IEnumerable<Car>> AllCars();
-        void AddCar(Car car);
+        Task<IEnumerable<Mark>> AllMarks();
+        void AddMark(Mark mark);
+        void DeleteMark(Mark mark);
+        void UpdateMark(Mark mark);
         bool SaveChanges();
     }
 }

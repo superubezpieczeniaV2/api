@@ -79,8 +79,10 @@ namespace Superubezpieczenia
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                 };
             });
-            services.AddScoped<ICarServices, CarService>();
-            services.AddScoped<ICarRepository, CarRepository>();
+            services.AddScoped<IPolicyDetailsServices, PolicyDetailsService>();
+            services.AddScoped<IPolicyDetailsRepository, PolicyDetailsRepository>();
+            services.AddScoped<IMarkService, MarkService>();
+            services.AddScoped<IMarkRepository, MarkRepository>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

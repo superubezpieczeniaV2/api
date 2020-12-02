@@ -12,6 +12,6 @@ namespace Superubezpieczenia.Domain.Models
         public int IDParkingPlace { get; set; }
         public string Place { get; set; }
         public double value { get; set; }
-        public virtual ICollection<Car> Cars { get; set; }
+        public virtual ICollection<PolicyDetails> Policies { get; set; }
     }
 }

@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Domain.Models
 {
-    public class Policy
+    public class Insurance
     {
         [Key]
-        public int IDPolicy { get; set; }
+        public int IDInsurance { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
         public int IDForm { get; set; }

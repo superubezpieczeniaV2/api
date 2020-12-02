@@ -7,11 +7,11 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Domain.Models
 {
-    public class Car
+    public class PolicyDetails
     {
         [Key]
-        public int IDAuto { get; set; }
-        public int IDModel { get; set; }
+        public int IDPolicyDetails { get; set; }
+        public int IDMark { get; set; }
         public int IDTypeOwner { get; set; }
         public DateTime YearProduction { get; set; }
         public int IDTypeFuel { get; set; }
@@ -25,8 +25,8 @@ namespace Superubezpieczenia.Domain.Models
         public DateTime SinceWhenInsurance { get; set; }
         public int ExtraDrivers { get; set; }
         public int CurrentMileage { get; set; }
-        [ForeignKey("IDModel")]
-        public virtual Model Model { get; set; }
+        [ForeignKey("IDMark")]
+        public virtual Mark Mark { get; set; }
         [ForeignKey("IDTypeOwner")]
         public virtual TypeOwner TypeOwner { get; set; }
         [ForeignKey("IDTypeFuel")]

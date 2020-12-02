@@ -9,21 +9,21 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Persistence.Repositories
 {
-    public class CarRepository : BaseRepository, ICarRepository
+    public class PolicyDetailsRepository : BaseRepository, IPolicyDetailsRepository
     {
-        public CarRepository(ApplicationDbContext context) : base(context)
+        public PolicyDetailsRepository(ApplicationDbContext context) : base(context)
         {
 
         }
-        public void AddCar(Car car)
+        public void AddPolicyDetails(PolicyDetails policyDetails)
         {
-            _context.Cars.Add(car);
+            _context.PolicyDetails.Add(policyDetails);
         }
 
-        public async Task<IEnumerable<Car>> AllCars()
+        public async Task<IEnumerable<PolicyDetails>> AllPolicys()
         {
 
-            return await _context.Cars.ToListAsync();
+            return await _context.PolicyDetails.ToListAsync();
         }
 
         public bool SaveChanges()

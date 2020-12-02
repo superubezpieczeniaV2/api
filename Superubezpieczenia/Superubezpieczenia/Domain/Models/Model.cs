@@ -16,6 +16,5 @@ namespace Superubezpieczenia.Domain.Models
 
         [ForeignKey("IDMark")]
         public virtual Mark Mark { get; set; }
-        public virtual ICollection<Car> Cars { get; set; }
     }
 }

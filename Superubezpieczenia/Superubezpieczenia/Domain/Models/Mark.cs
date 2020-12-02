@@ -13,5 +13,6 @@ namespace Superubezpieczenia.Domain.Models
         public string Name { get; set; }
         public double Value { get; set; }
         public virtual ICollection<Model> Models { get; set; }
+        public virtual ICollection<PolicyDetails> Policies { get; set; }
     }
 }

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Superubezpieczenia.Persistence.Context;
 
 namespace Superubezpieczenia.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201202160202_sdf")]
+    partial class sdf
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -150,6 +152,72 @@ namespace Superubezpieczenia.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.CustomerData", b =>
+                {
+                    b.Property<int>("IDAuto")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .UseIdentityColumn();
+
+                    b.Property<bool>("BroughtBack")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("CurrentMileage")
+                        .HasColumnType("int");
+
+                    b.Property<int>("ExtraDrivers")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FirstRegistration")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("IDEnginePower")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDMethodUse")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDModel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDParkingPlace")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDTypeFuel")
+                        .HasColumnType("int");
+
+                    b.Property<int>("IDTypeOwner")
+                        .HasColumnType("int");
+
+                    b.Property<bool>("LocationDriver")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("PlannedMileage")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<DateTime>("SinceWhenInsurance")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("YearProduction")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("IDAuto");
+
+                    b.HasIndex("IDEnginePower");
+
+                    b.HasIndex("IDMethodUse");
+
+                    b.HasIndex("IDModel");
+
+                    b.HasIndex("IDParkingPlace");
+
+                    b.HasIndex("IDTypeFuel");
+
+                    b.HasIndex("IDTypeOwner");
+
+                    b.ToTable("Cars");
+                });
+
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.EnginePower", b =>
                 {
                     b.Property<int>("IDenginePower")
@@ -178,7 +246,7 @@ namespace Superubezpieczenia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<int>("IDPolicyDetails")
+                    b.Property<int>("IDAuto")
                         .HasColumnType("int");
 
                     b.Property<string>("IDUser")
@@ -186,39 +254,11 @@ namespace Superubezpieczenia.Migrations
 
                     b.HasKey("IDForm");
 
-                    b.HasIndex("IDPolicyDetails");
+                    b.HasIndex("IDAuto");
 
                     b.HasIndex("IDUser");
 
                     b.ToTable("Forms");
-                });
-
-            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Insurance", b =>
-                {
-                    b.Property<int>("IDInsurance")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<DateTime>("EndDate")
-                        .HasColumnType("datetime2");
-
-                    b.Property<int>("IDForm")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IDPriceList")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartDate")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("IDInsurance");
-
-                    b.HasIndex("IDForm");
-
-                    b.HasIndex("IDPriceList");
-
-                    b.ToTable("Insurances");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.Mark", b =>
@@ -295,70 +335,32 @@ namespace Superubezpieczenia.Migrations
                     b.ToTable("ParkingPlaces");
                 });
 
-            modelBuilder.Entity("Superubezpieczenia.Domain.Models.PolicyDetails", b =>
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Policy", b =>
                 {
-                    b.Property<int>("IDPolicyDetails")
+                    b.Property<int>("IDPolicy")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<bool>("BroughtBack")
-                        .HasColumnType("bit");
-
-                    b.Property<int>("CurrentMileage")
-                        .HasColumnType("int");
-
-                    b.Property<int>("ExtraDrivers")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("FirstRegistration")
+                    b.Property<DateTime>("EndDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("IDEnginePower")
+                    b.Property<int>("IDForm")
                         .HasColumnType("int");
 
-                    b.Property<int>("IDMark")
+                    b.Property<int>("IDPriceList")
                         .HasColumnType("int");
 
-                    b.Property<int>("IDMethodUse")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IDParkingPlace")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IDTypeFuel")
-                        .HasColumnType("int");
-
-                    b.Property<int>("IDTypeOwner")
-                        .HasColumnType("int");
-
-                    b.Property<bool>("LocationDriver")
-                        .HasColumnType("bit");
-
-                    b.Property<string>("PlannedMileage")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("SinceWhenInsurance")
+                    b.Property<DateTime>("StartDate")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("YearProduction")
-                        .HasColumnType("datetime2");
+                    b.HasKey("IDPolicy");
 
-                    b.HasKey("IDPolicyDetails");
+                    b.HasIndex("IDForm");
 
-                    b.HasIndex("IDEnginePower");
+                    b.HasIndex("IDPriceList");
 
-                    b.HasIndex("IDMark");
-
-                    b.HasIndex("IDMethodUse");
-
-                    b.HasIndex("IDParkingPlace");
-
-                    b.HasIndex("IDTypeFuel");
-
-                    b.HasIndex("IDTypeOwner");
-
-                    b.ToTable("PolicyDetails");
+                    b.ToTable("Policies");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.PriceList", b =>
@@ -534,11 +536,62 @@ namespace Superubezpieczenia.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.CustomerData", b =>
+                {
+                    b.HasOne("Superubezpieczenia.Domain.Models.EnginePower", "EnginePower")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDEnginePower")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.MethodUse", "MethodUse")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDMethodUse")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.Model", "Model")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDModel")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.ParkingPlace", "ParkingPlace")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDParkingPlace")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.TypeFuel", "TypeFuel")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDTypeFuel")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("Superubezpieczenia.Domain.Models.TypeOwner", "TypeOwner")
+                        .WithMany("Cars")
+                        .HasForeignKey("IDTypeOwner")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("EnginePower");
+
+                    b.Navigation("MethodUse");
+
+                    b.Navigation("Model");
+
+                    b.Navigation("ParkingPlace");
+
+                    b.Navigation("TypeFuel");
+
+                    b.Navigation("TypeOwner");
+                });
+
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.Form", b =>
                 {
-                    b.HasOne("Superubezpieczenia.Domain.Models.PolicyDetails", "PolicyDetails")
+                    b.HasOne("Superubezpieczenia.Domain.Models.CustomerData", "Car")
                         .WithMany("Forms")
-                        .HasForeignKey("IDPolicyDetails")
+                        .HasForeignKey("IDAuto")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
@@ -546,28 +599,9 @@ namespace Superubezpieczenia.Migrations
                         .WithMany()
                         .HasForeignKey("IDUser");
 
-                    b.Navigation("PolicyDetails");
+                    b.Navigation("Car");
 
                     b.Navigation("User");
-                });
-
-            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Insurance", b =>
-                {
-                    b.HasOne("Superubezpieczenia.Domain.Models.Form", "Form")
-                        .WithMany("Policies")
-                        .HasForeignKey("IDForm")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Superubezpieczenia.Domain.Models.PriceList", "PriceList")
-                        .WithMany("Insurances")
-                        .HasForeignKey("IDPriceList")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Form");
-
-                    b.Navigation("PriceList");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.Model", b =>
@@ -581,60 +615,33 @@ namespace Superubezpieczenia.Migrations
                     b.Navigation("Mark");
                 });
 
-            modelBuilder.Entity("Superubezpieczenia.Domain.Models.PolicyDetails", b =>
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Policy", b =>
                 {
-                    b.HasOne("Superubezpieczenia.Domain.Models.EnginePower", "EnginePower")
+                    b.HasOne("Superubezpieczenia.Domain.Models.Form", "Form")
                         .WithMany("Policies")
-                        .HasForeignKey("IDEnginePower")
+                        .HasForeignKey("IDForm")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Superubezpieczenia.Domain.Models.Mark", "Mark")
+                    b.HasOne("Superubezpieczenia.Domain.Models.PriceList", "PriceList")
                         .WithMany("Policies")
-                        .HasForeignKey("IDMark")
+                        .HasForeignKey("IDPriceList")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("Superubezpieczenia.Domain.Models.MethodUse", "MethodUse")
-                        .WithMany("Policies")
-                        .HasForeignKey("IDMethodUse")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("Form");
 
-                    b.HasOne("Superubezpieczenia.Domain.Models.ParkingPlace", "ParkingPlace")
-                        .WithMany("Policies")
-                        .HasForeignKey("IDParkingPlace")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                    b.Navigation("PriceList");
+                });
 
-                    b.HasOne("Superubezpieczenia.Domain.Models.TypeFuel", "TypeFuel")
-                        .WithMany("Policies")
-                        .HasForeignKey("IDTypeFuel")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("Superubezpieczenia.Domain.Models.TypeOwner", "TypeOwner")
-                        .WithMany("Policies")
-                        .HasForeignKey("IDTypeOwner")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("EnginePower");
-
-                    b.Navigation("Mark");
-
-                    b.Navigation("MethodUse");
-
-                    b.Navigation("ParkingPlace");
-
-                    b.Navigation("TypeFuel");
-
-                    b.Navigation("TypeOwner");
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.CustomerData", b =>
+                {
+                    b.Navigation("Forms");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.EnginePower", b =>
                 {
-                    b.Navigation("Policies");
+                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.Form", b =>
@@ -645,38 +652,36 @@ namespace Superubezpieczenia.Migrations
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.Mark", b =>
                 {
                     b.Navigation("Models");
-
-                    b.Navigation("Policies");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.MethodUse", b =>
                 {
-                    b.Navigation("Policies");
+                    b.Navigation("Cars");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Model", b =>
+                {
+                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.ParkingPlace", b =>
                 {
-                    b.Navigation("Policies");
-                });
-
-            modelBuilder.Entity("Superubezpieczenia.Domain.Models.PolicyDetails", b =>
-                {
-                    b.Navigation("Forms");
+                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.PriceList", b =>
                 {
-                    b.Navigation("Insurances");
+                    b.Navigation("Policies");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.TypeFuel", b =>
                 {
-                    b.Navigation("Policies");
+                    b.Navigation("Cars");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.TypeOwner", b =>
                 {
-                    b.Navigation("Policies");
+                    b.Navigation("Cars");
                 });
 #pragma warning restore 612, 618
         }
