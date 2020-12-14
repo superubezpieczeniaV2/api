@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iqeQBdi1d+rJQSFJoAR/NcMYmHCSOWuQmWjfovKPvvd5RGua1d7Meu4CanSeQVkEjqr4FHav2JHi1P/bToI6pQ==",
+  "dgSpecHash": "u73RgmS7f6tu0Zw+Nx7GfORg3rxfIObWghdH+PMphEszKDwFj+ARpeX1xbl5X2YH1r6L0ztcAyL1K2AGgemqBQ==",
   "success": true,
   "projectFilePath": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
   "expectedPackageFiles": [
@@ -64,6 +64,7 @@
     "C:\\Users\\aleks\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
     "C:\\Users\\aleks\\.nuget\\packages\\microsoft.win32.registry\\4.7.0\\microsoft.win32.registry.4.7.0.nupkg.sha512",
     "C:\\Users\\aleks\\.nuget\\packages\\microsoft.win32.systemevents\\4.7.0\\microsoft.win32.systemevents.4.7.0.nupkg.sha512",
+    "C:\\Users\\aleks\\.nuget\\packages\\mysqlconnector\\1.2.1\\mysqlconnector.1.2.1.nupkg.sha512",
     "C:\\Users\\aleks\\.nuget\\packages\\newtonsoft.json\\10.0.1\\newtonsoft.json.10.0.1.nupkg.sha512",
     "C:\\Users\\aleks\\.nuget\\packages\\runtime.native.system\\4.3.0\\runtime.native.system.4.3.0.nupkg.sha512",
     "C:\\Users\\aleks\\.nuget\\packages\\swashbuckle.aspnetcore\\5.6.3\\swashbuckle.aspnetcore.5.6.3.nupkg.sha512",

@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Superubezpieczenia.Persistence.Context;
 
 namespace Superubezpieczenia.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201210221559_dfa")]
+    partial class dfa
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -573,7 +575,7 @@ namespace Superubezpieczenia.Migrations
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.Model", b =>
                 {
                     b.HasOne("Superubezpieczenia.Domain.Models.Mark", "Mark")
-                        .WithMany()
+                        .WithMany("Models")
                         .HasForeignKey("IDMark")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -590,7 +592,7 @@ namespace Superubezpieczenia.Migrations
                         .IsRequired();
 
                     b.HasOne("Superubezpieczenia.Domain.Models.Mark", "Mark")
-                        .WithMany()
+                        .WithMany("Policies")
                         .HasForeignKey("IDMark")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -639,6 +641,13 @@ namespace Superubezpieczenia.Migrations
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.Form", b =>
                 {
+                    b.Navigation("Policies");
+                });
+
+            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Mark", b =>
+                {
+                    b.Navigation("Models");
+
                     b.Navigation("Policies");
                 });
 

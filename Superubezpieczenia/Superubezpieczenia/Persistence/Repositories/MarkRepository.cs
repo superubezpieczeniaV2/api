@@ -19,6 +19,14 @@ namespace Superubezpieczenia.Persistence.Repositories
         {
             _context.Marks.Add(mark);
         }
+        public Mark SelectedMark(string name)
+        {
+            return _context.Marks.FirstOrDefault(p => p.Name==name);
+        }
+        public Mark FindById(int id)
+        {
+            return _context.Marks.FirstOrDefault(p => p.IDMark == id);
+        }
 
         public async Task<IEnumerable<Mark>> AllMarks()
         {

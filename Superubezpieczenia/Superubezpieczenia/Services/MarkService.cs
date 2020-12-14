@@ -17,6 +17,14 @@ namespace Superubezpieczenia.Services
             _markRepository = markRepository;
 
         }
+        public Mark FindById(int id)
+        {
+            return _markRepository.FindById(id);
+        }
+        public Mark SelectedMark(string name)
+        {
+            return _markRepository.SelectedMark(name);
+        }
 
         public void AddMark(Mark mark)
         {

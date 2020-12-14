@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Superubezpieczenia.Domain.Models
+namespace Superubezpieczenia.Resources.ViewModels
 {
-    public class Mark
+    public class MarkVM
     {
-        [Key]
         public int IDMark { get; set; }
         public string Name { get; set; }
         public double Value { get; set; }
-        
     }
 }
