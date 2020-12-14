@@ -65,12 +65,12 @@ namespace Superubezpieczenia.Controllers
 
             return Ok();
         }
-        [HttpGet("{name}")]
+        /*[HttpGet("{name}")]
         public ActionResult SelectedMark(string name)
         {
             var sMark = _markService.SelectedMark(name);
             return Ok(_mapper.Map<MarkVM>(sMark));
-        }
+        }*/
         
     }
 }

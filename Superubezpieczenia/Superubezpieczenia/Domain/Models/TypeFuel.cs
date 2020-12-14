@@ -11,6 +11,6 @@ namespace Superubezpieczenia.Domain.Models
         [Key]
         public int IDTypeFuel { get; set; }
         public int Type { get; set; }
-        public virtual ICollection<PolicyDetails> Policies { get; set; }
+        
     }
 }

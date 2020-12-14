@@ -84,7 +84,8 @@ namespace Superubezpieczenia
             services.AddScoped<IPolicyDetailsRepository, PolicyDetailsRepository>();
             services.AddScoped<IMarkService, MarkService>();
             services.AddScoped<IMarkRepository, MarkRepository>();
-
+            services.AddScoped<IOwnerService, OwnerService>();
+            services.AddScoped<IOwnerRepository, OwnerRepository>();
 
             services.AddAutoMapper(typeof(ModelToResourceProfile));
         }

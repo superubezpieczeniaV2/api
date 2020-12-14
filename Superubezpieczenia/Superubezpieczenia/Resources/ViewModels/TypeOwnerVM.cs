@@ -1,17 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Superubezpieczenia.Domain.Models
+namespace Superubezpieczenia.Resources.ViewModels
 {
-    public class TypeOwner
+    public class TypeOwnerVM
     {
-        [Key]
         public int IDTypeOwner { get; set; }
         public string Type { get; set; }
         public double Value { get; set; }
-        
     }
 }

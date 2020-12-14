@@ -19,7 +19,7 @@ namespace Superubezpieczenia.Persistence.Repositories
         {
             _context.Marks.Add(mark);
         }
-        public Mark SelectedMark(string name)
+        public Mark SelectedMark(string name)//do ulepszenia 
         {
             return _context.Marks.FirstOrDefault(p => p.Name==name);
         }
