@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Services
 {
-    public class PolicyDetailsService : IPolicyDetailsServices
+    public class PolicyDetailsService : IPolicyDetailsService
     {
         private readonly IPolicyDetailsRepository _policyDetailsRepository;
         public PolicyDetailsService(IPolicyDetailsRepository policyDetailsRepository)

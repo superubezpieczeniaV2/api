@@ -8,10 +8,10 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Services
 {
-    public class OwnerService : IOwnerService
+    public class TypeOwnerService : ITypeOwnerService
     {
-        public readonly IOwnerRepository _ownerRepository;
-        public OwnerService(IOwnerRepository ownerRepository)
+        public readonly ITypeOwnerRepository _ownerRepository;
+        public TypeOwnerService(ITypeOwnerRepository ownerRepository)
         {
             _ownerRepository = ownerRepository;
         }

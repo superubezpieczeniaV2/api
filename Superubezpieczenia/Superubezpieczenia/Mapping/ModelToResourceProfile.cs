@@ -14,10 +14,30 @@ namespace Superubezpieczenia.Domain.Models
         {
             CreateMap<Mark, MarkVM>();
             CreateMap<MarkDTO, Mark>();
+
             CreateMap<TypeOwner, TypeOwnerVM>();
             CreateMap<TypeOwnerDTO, TypeOwner>();
+
             CreateMap<Model, ModelVM>();
             CreateMap<ModelDTO, Model>();
+
+            CreateMap<EnginePower, EnginePowerVM>();
+            CreateMap<EnginePowerDTO, EnginePower>();
+
+            CreateMap<MethodUse, MethodUseVM>();
+            CreateMap<MethodUseDTO, MethodUse>();
+
+            CreateMap<ParkingPlace, ParkingPlaceVM>();
+            CreateMap<ParkingPlaceDTO, ParkingPlaceVM>();
+
+            CreateMap<PriceList, PriceListVM>();
+            CreateMap<PriceListDTO, PriceList>();
+
+            CreateMap<TypeFuel, TypeFuelVM>();
+            CreateMap<TypeFuelDTO, TypeFuel>();
+
+            CreateMap<TypeOwner, TypeOwnerVM>();
+            CreateMap<TypeOwnerDTO, TypeOwner>();
         }
     }
 }

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Domain.Services
 {
-    public interface IPolicyDetailsServices
+    public interface IPolicyDetailsService
     {
         Task<IEnumerable<PolicyDetails>> AllPolicys();
         void AddPolicyDetails(PolicyDetails policy);

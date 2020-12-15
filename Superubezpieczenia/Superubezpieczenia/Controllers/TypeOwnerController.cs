@@ -16,9 +16,9 @@ namespace Superubezpieczenia.Controllers
     [ApiController]
     public class TypeOwnerController : ControllerBase
     {
-        public readonly IOwnerService _ownerService;
+        public readonly ITypeOwnerService _ownerService;
         public readonly IMapper _mapper;
-        public TypeOwnerController(IOwnerService ownerService, IMapper mapper)
+        public TypeOwnerController(ITypeOwnerService ownerService, IMapper mapper)
         {
             _ownerService = ownerService;
             _mapper = mapper;

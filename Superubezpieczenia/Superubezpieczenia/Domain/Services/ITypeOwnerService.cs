@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Domain.Services
 {
-    public interface IOwnerService
+    public interface ITypeOwnerService
     {
         Task<IEnumerable<TypeOwner>> AllTypeOwner();
         TypeOwner FindById(int id);

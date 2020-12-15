@@ -80,14 +80,32 @@ namespace Superubezpieczenia
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                 };
             });
-            services.AddScoped<IPolicyDetailsServices, PolicyDetailsService>();
+            services.AddScoped<IPolicyDetailsService, PolicyDetailsService>();
             services.AddScoped<IPolicyDetailsRepository, PolicyDetailsRepository>();
+
             services.AddScoped<IMarkService, MarkService>();
             services.AddScoped<IMarkRepository, MarkRepository>();
-            services.AddScoped<IOwnerService, OwnerService>();
-            services.AddScoped<IOwnerRepository, OwnerRepository>();
+
+            services.AddScoped<ITypeOwnerService, TypeOwnerService>();
+            services.AddScoped<ITypeOwnerRepository, TypeOwnerRepository>();
+
             services.AddScoped<IModelService, ModelService>();
             services.AddScoped<IModelRepository, ModelRepository>();
+
+            services.AddScoped<IMethodUseService, MethodUseService>();
+            services.AddScoped<IMethodUseRepository, MethodUseRepository>();
+
+            services.AddScoped<IEnginePowerService, EnginePowerService>();
+            services.AddScoped<IEnginePowerRepository, EnginePowerRepository>();
+
+            services.AddScoped<IParkingPlaceService, ParkingPlaceService>();
+            services.AddScoped<IParkingPlaceRepository, ParkingPalceRepository>();
+
+            services.AddScoped<IPriceListService, PriceListService>();
+            services.AddScoped<IPriceListRepository, PriceListRepository>();
+
+            services.AddScoped<ITypeFuelService, TypeFuelService>();
+            services.AddScoped<ITypeFuelRepository, TypeFuelRepository>();
             services.AddAutoMapper(typeof(ModelToResourceProfile));
         }
 

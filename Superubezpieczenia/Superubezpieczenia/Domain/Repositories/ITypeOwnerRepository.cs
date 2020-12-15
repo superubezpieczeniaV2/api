@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Domain.Repositories
 {
-    public interface IOwnerRepository
+    public interface ITypeOwnerRepository
     {
         Task<IEnumerable<TypeOwner>> AllTypeOwner();
         TypeOwner FindById(int id);

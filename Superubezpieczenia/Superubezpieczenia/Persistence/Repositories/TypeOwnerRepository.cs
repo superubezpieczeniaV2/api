@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Persistence.Repositories
 {
-    public class OwnerRepository : BaseRepository, IOwnerRepository
+    public class TypeOwnerRepository : BaseRepository, ITypeOwnerRepository
     {
-        public OwnerRepository(ApplicationDbContext context) : base(context)
+        public TypeOwnerRepository(ApplicationDbContext context) : base(context)
         {
 
         }
