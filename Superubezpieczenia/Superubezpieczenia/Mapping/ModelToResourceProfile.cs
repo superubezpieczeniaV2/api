@@ -16,6 +16,8 @@ namespace Superubezpieczenia.Domain.Models
             CreateMap<MarkDTO, Mark>();
             CreateMap<TypeOwner, TypeOwnerVM>();
             CreateMap<TypeOwnerDTO, TypeOwner>();
+            CreateMap<Model, ModelVM>();
+            CreateMap<ModelDTO, Model>();
         }
     }
 }
