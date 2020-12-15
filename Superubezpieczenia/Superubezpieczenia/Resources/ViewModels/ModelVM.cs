@@ -7,5 +7,6 @@ namespace Superubezpieczenia.Resources.ViewModels
 {
     public class ModelVM
     {
+         public string Name { get; set; }
     }
 }
