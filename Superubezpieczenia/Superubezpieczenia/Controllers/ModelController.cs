@@ -50,6 +50,7 @@ namespace Superubezpieczenia.Controllers
             _modelService.SaveChanges();
             return Ok();
         }
+        [HttpPut("{id}")]
         public ActionResult UpdateModel(ModelDTO modelDTO, int id)
         {
             var uMark = _modelService.FindById(id);
