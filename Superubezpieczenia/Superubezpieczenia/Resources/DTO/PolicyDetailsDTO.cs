@@ -7,5 +7,6 @@ namespace Superubezpieczenia.Resources.DTO
 {
     public class PolicyDetailsDTO
     {
+
     }
 }
