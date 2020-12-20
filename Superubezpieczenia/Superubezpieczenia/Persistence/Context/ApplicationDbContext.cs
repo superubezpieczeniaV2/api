@@ -10,6 +10,11 @@ namespace Superubezpieczenia.Persistence.Context
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
+        public ApplicationDbContext(string connectionString) : base(GetOptions(connectionString))
+        {
+
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -26,6 +31,12 @@ namespace Superubezpieczenia.Persistence.Context
         public virtual DbSet<PriceList> PriceLists { get; set; }
         public virtual DbSet<TypeFuel> TypeFuels { get; set; }
         public virtual DbSet<TypeOwner> TypeOwners { get; set; }
+
+        private static DbContextOptions GetOptions(string connectionString)
+        {
+            return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
