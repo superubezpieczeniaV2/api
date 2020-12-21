@@ -26,9 +26,19 @@ namespace Superubezpieczenia.Services
             return await _policyDetailsRepository.AllPolicys();
         }
 
+        public async Task<IEnumerable<PolicyDetails>> FindByUser(string id)
+        {
+            return await _policyDetailsRepository.FindByUser(id);
+        }
+
         public bool SaveChanges()
         {
             return _policyDetailsRepository.SaveChanges();
         }
+        public void DeletePolicyDetails(PolicyDetails policy)
+        {
+            _policyDetailsRepository.DeletePolicyDetails(policy);
+        }
+
     }
 }

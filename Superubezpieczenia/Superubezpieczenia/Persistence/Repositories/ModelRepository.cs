@@ -22,7 +22,7 @@ namespace Superubezpieczenia.Persistence.Repositories
 
         public async Task<IEnumerable<Model>> AllModels()
         {
-            return await _context.Models.ToListAsync();
+            return await _context.Models.Include(b => b.Mark).ToListAsync();
         }
 
         public void DeleteModel(Model model)
@@ -30,9 +30,15 @@ namespace Superubezpieczenia.Persistence.Repositories
             _context.Models.Remove(model);
         }
 
+        public async Task<IEnumerable<Model>> FindByMark(int id)
+        {
+             
+            return await _context.Models.Include(b => b.Mark).Where(x => x.IDMark == id).ToListAsync();
+        }
         public Model FindById(int id)
         {
-            return _context.Models.FirstOrDefault(p => p.IDMark == id);
+           return _context.Models.FirstOrDefault(p => p.IDModel == id);
+           
         }
 
         public bool SaveChanges()
@@ -45,7 +51,7 @@ namespace Superubezpieczenia.Persistence.Repositories
             return _context.Models.FirstOrDefault(p => p.Name == name);
         }
 
-        public void UpdateModel(Model model)//zapewne do dokonczenia
+        public void UpdateModel(Model model)
         {
             
         }

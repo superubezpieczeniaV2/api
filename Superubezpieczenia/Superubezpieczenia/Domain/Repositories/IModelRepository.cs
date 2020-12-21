@@ -10,6 +10,7 @@ namespace Superubezpieczenia.Domain.Repositories
     {
         Task<IEnumerable<Model>> AllModels();
         Model SelectedModel(string name);
+        Task<IEnumerable<Model>> FindByMark(int id);
         Model FindById(int id);
         void AddModel(Model model);
         void DeleteModel(Model model);

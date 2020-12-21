@@ -11,7 +11,9 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDPolicyDetails { get; set; }
-        public int IDMark { get; set; }
+        public string IDUser { get; set; }
+        public int IDTypeInsurance { get; set; }
+        public int IDModel { get; set; }
         public int IDTypeOwner { get; set; }
         public DateTime YearProduction { get; set; }
         public int IDTypeFuel { get; set; }
@@ -25,8 +27,10 @@ namespace Superubezpieczenia.Domain.Models
         public DateTime SinceWhenInsurance { get; set; }
         public int ExtraDrivers { get; set; }
         public int CurrentMileage { get; set; }
-        [ForeignKey("IDMark")]
-        public virtual Mark Mark { get; set; }
+        [ForeignKey("IDTypeInsurance")]
+        public virtual TypeInsurance TypesInsurance { get; set; }
+        [ForeignKey("IDModel")]
+        public virtual Model Model { get; set; }
         [ForeignKey("IDTypeOwner")]
         public virtual TypeOwner TypeOwner { get; set; }
         [ForeignKey("IDTypeFuel")]
@@ -37,7 +41,9 @@ namespace Superubezpieczenia.Domain.Models
         public virtual MethodUse MethodUse { get; set; }
         [ForeignKey("IDParkingPlace")]
         public virtual ParkingPlace ParkingPlace { get; set; }
-        public virtual  ICollection<Form> Forms { get; set; }
+        [ForeignKey("IDUser")]
+        public virtual User User { get; set; }
+        
 
     }
 }

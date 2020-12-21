@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Resources.DTO
 {
-    public class PriceListDTO
+    public class TypeInsuranceDTO
     {
         public string Type { get; set; }
         public double Price { get; set; }

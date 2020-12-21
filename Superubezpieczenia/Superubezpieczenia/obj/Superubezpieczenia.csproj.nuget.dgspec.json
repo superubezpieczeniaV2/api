@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "D:\\projekt-rewak\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj": {}
+    "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj": {}
   },
   "projects": {
-    "D:\\projekt-rewak\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj": {
+    "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\projekt-rewak\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
+        "projectUniqueName": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
         "projectName": "Superubezpieczenia",
-        "projectPath": "D:\\projekt-rewak\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
-        "packagesPath": "C:\\Users\\Szczepan\\.nuget\\packages\\",
-        "outputPath": "D:\\projekt-rewak\\Superubezpieczenia\\Superubezpieczenia\\obj\\",
+        "projectPath": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
+        "packagesPath": "C:\\Users\\aleks\\.nuget\\packages\\",
+        "outputPath": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\Szczepan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\aleks\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [

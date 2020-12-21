@@ -7,6 +7,6 @@ namespace Superubezpieczenia.Resources.DTO
 {
     public class TypeFuelDTO
     {
-        public int Type { get; set; }
+        public string Type { get; set; }
     }
 }

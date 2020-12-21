@@ -7,7 +7,9 @@ namespace Superubezpieczenia.Resources.DTO
 {
     public class ModelDTO
     {
-        public int IDModel { get; set; }
-        public string Name { get; set; }//czy tylko tyle?
+        public int IDMark { get; set; }
+        public string Name { get; set; }
+        public double Value { get; set; }
+        
     }
 }

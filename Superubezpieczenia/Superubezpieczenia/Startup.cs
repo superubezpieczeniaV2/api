@@ -101,8 +101,8 @@ namespace Superubezpieczenia
             services.AddScoped<IParkingPlaceService, ParkingPlaceService>();
             services.AddScoped<IParkingPlaceRepository, ParkingPalceRepository>();
 
-            services.AddScoped<IPriceListService, PriceListService>();
-            services.AddScoped<IPriceListRepository, PriceListRepository>();
+            services.AddScoped<ITypeInsuranceService, TypeInsuranceService>();
+            services.AddScoped<ITypeInsuranceRepository, TypeInsuranceRepository>();
 
             services.AddScoped<ITypeFuelService, TypeFuelService>();
             services.AddScoped<ITypeFuelRepository, TypeFuelRepository>();

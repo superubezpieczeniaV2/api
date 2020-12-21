@@ -28,10 +28,10 @@ namespace Superubezpieczenia.Domain.Models
             CreateMap<MethodUseDTO, MethodUse>();
 
             CreateMap<ParkingPlace, ParkingPlaceVM>();
-            CreateMap<ParkingPlaceDTO, ParkingPlaceVM>();
+            CreateMap<ParkingPlaceDTO, ParkingPlace>();
 
-            CreateMap<PriceList, PriceListVM>();
-            CreateMap<PriceListDTO, PriceList>();
+            CreateMap<TypeInsurance, TypeInsuranceVM>();
+            CreateMap<TypeInsuranceDTO, TypeInsurance>();
 
             CreateMap<TypeFuel, TypeFuelVM>();
             CreateMap<TypeFuelDTO, TypeFuel>();

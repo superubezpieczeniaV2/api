@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Domain.Models
 {
-    public class PriceList
+    public class TypeInsurance
     {
         [Key]
-        public int IDPriceList { get; set; }
+        public int IDTypeInsurance { get; set; }
         public string Type { get; set; }
         public double Price { get; set; }
         

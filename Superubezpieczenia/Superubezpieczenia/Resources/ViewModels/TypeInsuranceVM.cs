@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Resources.ViewModels
 {
-    public class PriceListVM
+    public class TypeInsuranceVM
     {
         public int IDPriceList { get; set; }
         public string Type { get; set; }

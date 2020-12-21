@@ -13,11 +13,9 @@ namespace Superubezpieczenia.Domain.Models
         public int IDInsurance { get; set; }
         public DateTime StartDate { get; set; }
         public DateTime EndDate { get; set; }
-        public int IDForm { get; set; }
-        public int IDPriceList { get; set; }
-        [ForeignKey("IDForm")]
-        public virtual Form Form { get; set; }
-        [ForeignKey("IDPriceList")]
-        public virtual PriceList PriceList { get; set; }
+        public string IDUser { get; set; }
+
+        [ForeignKey("IDUser")]
+        public virtual User User { get; set; }
     }
 }

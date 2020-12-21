@@ -30,6 +30,13 @@ namespace Superubezpieczenia.Controllers
             var model = await _modelService.AllModels();
             return model;
         }
+        [HttpGet("{id}")]
+        public async Task<IEnumerable<Model>> FindByMark(int id)
+        {
+            var model = await _modelService.FindByMark(id);
+            return model;
+        }
+
         [HttpPost]
         public ActionResult<ModelVM> AddModel(ModelDTO modelDTO)
         {

@@ -29,6 +29,10 @@ namespace Superubezpieczenia.Services
         {
             _modelRepository.DeleteModel(model);
         }
+        public async Task<IEnumerable<Model>> FindByMark(int id)
+        {
+            return await _modelRepository.FindByMark(id);
+        }
         public Model FindById(int id)
         {
             return _modelRepository.FindById(id);

@@ -4,10 +4,12 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Superubezpieczenia.Resources.DTO
+namespace Superubezpieczenia.Resources.ViewModels
 {
-    public class PolicyDetailsDTO
-    {       
+    public class PolicyDetailsVM
+    {
+        [Required(ErrorMessage = "Wszystkie pola muszą być uzupełnione")]
+        public int IDPolicyDetails { get; set; }
         [Required(ErrorMessage = "Wszystkie pola muszą być uzupełnione")]
         public string IDUser { get; set; }
         [Required(ErrorMessage = "Wszystkie pola muszą być uzupełnione")]
@@ -38,8 +40,5 @@ namespace Superubezpieczenia.Resources.DTO
         public DateTime SinceWhenInsurance { get; set; }
         [Required(ErrorMessage = "Wszystkie pola muszą być uzupełnione")]
         public int ExtraDrivers { get; set; }
-        [Required(ErrorMessage = "Wszystkie pola muszą być uzupełnione")]
-        public int CurrentMileage { get; set; }
-
     }
 }

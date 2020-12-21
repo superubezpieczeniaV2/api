@@ -29,6 +29,8 @@ namespace Superubezpieczenia.Controllers
             var parkingPlace=await _parkingPlaceService.AllParkingPlace();
             return parkingPlace;
         }
+       
+        
         [HttpPost]
         public ActionResult<ParkingPlaceVM> AddParkingPlace(ParkingPlaceDTO parkingPlaceDTO)
         {
@@ -50,14 +52,14 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
-        public ActionResult UpdateParkingPlace(ModelDTO modelDTO, int id)
+        public ActionResult UpdateParkingPlace(ParkingPlaceDTO parkingPlaceDTO, int id)
         {
             var uMark = _parkingPlaceService.FindById(id);
             if (uMark == null)
             {
                 return NotFound();
             }
-            _mapper.Map(modelDTO, uMark);
+            _mapper.Map(parkingPlaceDTO, uMark);
             _parkingPlaceService.UpdateParkingPlace(uMark);
             _parkingPlaceService.SaveChanges();
 

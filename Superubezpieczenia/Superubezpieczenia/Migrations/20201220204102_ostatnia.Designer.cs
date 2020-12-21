@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Superubezpieczenia.Persistence.Context;
 
 namespace Superubezpieczenia.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20201220204102_ostatnia")]
+    partial class ostatnia
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -243,9 +245,6 @@ namespace Superubezpieczenia.Migrations
                     b.Property<string>("Name")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<double>("Value")
-                        .HasColumnType("float");
-
                     b.HasKey("IDModel");
 
                     b.HasIndex("IDMark");
@@ -354,8 +353,8 @@ namespace Superubezpieczenia.Migrations
                         .HasColumnType("int")
                         .UseIdentityColumn();
 
-                    b.Property<string>("Type")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("Type")
+                        .HasColumnType("int");
 
                     b.HasKey("IDTypeFuel");
 
@@ -377,7 +376,7 @@ namespace Superubezpieczenia.Migrations
 
                     b.HasKey("IDTypeInsurance");
 
-                    b.ToTable("TypeInsurance");
+                    b.ToTable("PriceLists");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.TypeOwner", b =>
