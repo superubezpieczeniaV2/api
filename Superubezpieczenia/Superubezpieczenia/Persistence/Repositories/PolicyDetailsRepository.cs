@@ -27,9 +27,13 @@ namespace Superubezpieczenia.Persistence.Repositories
             return await _context.PolicyDetails.ToListAsync();
         }
 
-        public async Task<IEnumerable<PolicyDetails>> FindByUser (string id)
+        public async Task<IEnumerable<PolicyDetails>> FindByUser (string username)
         {
-            return await _context.PolicyDetails.Include(x => x.User).Where(x => x.IDUser == id).ToListAsync();
+            return await _context.PolicyDetails.Include(x => x.User).Where(x => x.Username == username).ToListAsync();
+        }
+        public PolicyDetails FindById(int id)
+        {
+            return _context.PolicyDetails.FirstOrDefault(x => x.IDPolicyDetails == id);
         }
         public bool SaveChanges()
         {

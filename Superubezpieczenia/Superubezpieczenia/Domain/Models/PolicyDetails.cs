@@ -11,7 +11,7 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDPolicyDetails { get; set; }
-        public string IDUser { get; set; }
+        public string Username { get; set; }
         public int IDTypeInsurance { get; set; }
         public int IDModel { get; set; }
         public int IDTypeOwner { get; set; }
@@ -41,7 +41,7 @@ namespace Superubezpieczenia.Domain.Models
         public virtual MethodUse MethodUse { get; set; }
         [ForeignKey("IDParkingPlace")]
         public virtual ParkingPlace ParkingPlace { get; set; }
-        [ForeignKey("IDUser")]
+        [ForeignKey("Username")]
         public virtual User User { get; set; }
         
 

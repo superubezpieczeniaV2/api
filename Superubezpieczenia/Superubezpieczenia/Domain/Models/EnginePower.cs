@@ -9,7 +9,7 @@ namespace Superubezpieczenia.Domain.Models
     public class EnginePower
     {
         [Key]
-        public int IDenginePower { get; set; }
+        public int IDEnginePower { get; set; }
         public double Power { get; set; }
         public double Capacity { get; set; }
         public double Value { get; set; }

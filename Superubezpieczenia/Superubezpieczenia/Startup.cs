@@ -106,6 +106,13 @@ namespace Superubezpieczenia
 
             services.AddScoped<ITypeFuelService, TypeFuelService>();
             services.AddScoped<ITypeFuelRepository, TypeFuelRepository>();
+
+            services.AddScoped<ICalculatorService, CalculatorService>();
+            services.AddScoped<ICalculatorRepository, CalculatorRepository>();
+
+            services.AddScoped<IInsuranceService, InsuranceService>();
+            services.AddScoped<IInsuranceRepository, InsuranceRepository>();
+
             services.AddAutoMapper(typeof(ModelToResourceProfile));
         }
 

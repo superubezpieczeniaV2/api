@@ -8,6 +8,6 @@ namespace Superubezpieczenia.Resources.DTO
     public class ParkingPlaceDTO
     {
         public string Place { get; set; }
-        public double value { get; set; }
+        public double Value { get; set; }
     }
 }

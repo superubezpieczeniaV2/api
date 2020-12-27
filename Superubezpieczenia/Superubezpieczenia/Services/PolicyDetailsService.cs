@@ -25,10 +25,13 @@ namespace Superubezpieczenia.Services
         {
             return await _policyDetailsRepository.AllPolicys();
         }
-
-        public async Task<IEnumerable<PolicyDetails>> FindByUser(string id)
+        public PolicyDetails FindById(int id)
         {
-            return await _policyDetailsRepository.FindByUser(id);
+            return _policyDetailsRepository.FindById(id);
+        }
+        public async Task<IEnumerable<PolicyDetails>> FindByUser(string username)
+        {
+            return await _policyDetailsRepository.FindByUser(username);
         }
 
         public bool SaveChanges()

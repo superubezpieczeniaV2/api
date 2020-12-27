@@ -65,7 +65,8 @@ namespace Superubezpieczenia.Controllers
                 {
                     token = new JwtSecurityTokenHandler().WriteToken(token),
                     expiration = token.ValidTo,
-                    
+                    userRoles,
+
                 }); 
             }
             return Unauthorized();

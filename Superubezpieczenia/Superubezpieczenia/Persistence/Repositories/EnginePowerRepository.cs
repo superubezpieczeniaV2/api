@@ -32,7 +32,7 @@ namespace Superubezpieczenia.Persistence.Repositories
 
         public EnginePower FindById(int id)
         {
-            return _context.EnginePowers.FirstOrDefault(p => p.IDenginePower == id);
+            return _context.EnginePowers.FirstOrDefault(p => p.IDEnginePower == id);
         }
 
         public bool SaveChanges()

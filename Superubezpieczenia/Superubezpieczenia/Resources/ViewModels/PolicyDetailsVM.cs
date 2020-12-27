@@ -11,7 +11,7 @@ namespace Superubezpieczenia.Resources.ViewModels
         [Required(ErrorMessage = "Wszystkie pola muszą być uzupełnione")]
         public int IDPolicyDetails { get; set; }
         [Required(ErrorMessage = "Wszystkie pola muszą być uzupełnione")]
-        public string IDUser { get; set; }
+        public string Username { get; set; }
         [Required(ErrorMessage = "Wszystkie pola muszą być uzupełnione")]
         public int IDTypeInsurance { get; set; }
         [Required(ErrorMessage = "Wszystkie pola muszą być uzupełnione")]

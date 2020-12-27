@@ -7,7 +7,7 @@ namespace Superubezpieczenia.Resources.ViewModels
 {
     public class TypeInsuranceVM
     {
-        public int IDPriceList { get; set; }
+        public int IDTypeInsurance { get; set; }
         public string Type { get; set; }
         public double Price { get; set; }
     }
