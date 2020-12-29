@@ -20,6 +20,8 @@ using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Repositories;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.MailSender;
+using Superubezpieczenia.MailSender.Setings;
 using Superubezpieczenia.Persistence.Context;
 using Superubezpieczenia.Persistence.Repositories;
 using Superubezpieczenia.Services;
@@ -80,6 +82,9 @@ namespace Superubezpieczenia
                     IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:Secret"]))
                 };
             });
+            services.Configure<MailConfig>(Configuration.GetSection("Mail"));
+            services.AddSingleton<IMailService, MailService>();
+
             services.AddScoped<IPolicyDetailsService, PolicyDetailsService>();
             services.AddScoped<IPolicyDetailsRepository, PolicyDetailsRepository>();
 
