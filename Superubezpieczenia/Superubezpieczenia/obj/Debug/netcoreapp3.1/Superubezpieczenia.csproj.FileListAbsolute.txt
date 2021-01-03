@@ -73,9 +73,6 @@ D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\Microsoft.A
 D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\AutoMapper.dll
 D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\MySqlConnector.dll
-D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.csproj.CoreCompileInputs.cache
-D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cs
-D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cache
 D:\projekt-rewak\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\appsettings.Development.json
 D:\projekt-rewak\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\appsettings.json
 D:\projekt-rewak\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -154,3 +151,6 @@ D:\projekt-rewak\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\s
 D:\projekt-rewak\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.dll
 D:\projekt-rewak\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.pdb
 D:\projekt-rewak\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.genruntimeconfig.cache
+D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.csproj.CoreCompileInputs.cache
+D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cs
+D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cache
