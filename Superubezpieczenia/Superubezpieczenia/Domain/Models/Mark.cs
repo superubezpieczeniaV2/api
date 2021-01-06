@@ -10,7 +10,9 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDMark { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public double Value { get; set; }
         
     }

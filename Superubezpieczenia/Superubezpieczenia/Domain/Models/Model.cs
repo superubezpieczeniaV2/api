@@ -12,7 +12,9 @@ namespace Superubezpieczenia.Domain.Models
         [Key]
         public int IDModel { get; set; }
         public int IDMark { get; set; }
+        [Required]
         public string Name { get; set; }
+        [Required]
         public double Value { get; set; }
 
         [ForeignKey("IDMark")]

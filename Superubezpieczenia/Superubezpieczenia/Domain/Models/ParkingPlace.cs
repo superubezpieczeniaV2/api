@@ -10,7 +10,9 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDParkingPlace { get; set; }
+        [Required]
         public string Place { get; set; }
+        [Required]
         public double Value { get; set; }
         
     }

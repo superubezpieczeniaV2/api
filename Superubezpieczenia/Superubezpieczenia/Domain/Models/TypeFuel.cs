@@ -10,6 +10,7 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDTypeFuel { get; set; }
+        [Required]
         public string Type { get; set; }
         
     }

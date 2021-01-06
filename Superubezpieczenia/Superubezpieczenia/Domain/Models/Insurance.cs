@@ -11,7 +11,9 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDInsurance { get; set; }
+        [Required]
         public DateTime StartDate { get; set; }
+        [Required]
         public DateTime EndDate { get; set; }
         public string Id { get; set; }
 

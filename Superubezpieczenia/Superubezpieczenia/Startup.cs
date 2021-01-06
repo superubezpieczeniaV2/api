@@ -20,6 +20,7 @@ using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Repositories;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.MailSender;
 using Superubezpieczenia.MailSender.Setings;
 using Superubezpieczenia.Persistence.Context;
@@ -84,6 +85,8 @@ namespace Superubezpieczenia
             });
             services.Configure<MailConfig>(Configuration.GetSection("Mail"));
             services.AddSingleton<IMailService, MailService>();
+
+            services.AddScoped<ILog, DBLogger>();
 
             services.AddScoped<IPolicyDetailsService, PolicyDetailsService>();
             services.AddScoped<IPolicyDetailsRepository, PolicyDetailsRepository>();

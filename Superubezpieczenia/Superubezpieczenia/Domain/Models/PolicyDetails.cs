@@ -11,19 +11,32 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDPolicyDetails { get; set; }
+        [Required]
         public string Username { get; set; }
+        [Required]
         public int IDTypeInsurance { get; set; }
+        [Required]
         public int IDModel { get; set; }
+        [Required]
         public int IDTypeOwner { get; set; }
+        [Required]
         public DateTime YearProduction { get; set; }
+        [Required]
         public int IDTypeFuel { get; set; }
+        [Required]
         public int IDEnginePower { get; set; }
+        [Required]
         public Boolean LocationDriver { get; set; }
         public DateTime FirstRegistration { get; set; }
+        [Required]
         public string PlannedMileage { get; set; }
+        [Required]
         public int IDMethodUse { get; set; }
+        [Required]
         public int IDParkingPlace { get; set; }
+        [Required]
         public Boolean BroughtBack { get; set; }
+        [Required]
         public DateTime SinceWhenInsurance { get; set; }
         public int ExtraDrivers { get; set; }
         public int CurrentMileage { get; set; }
@@ -41,8 +54,7 @@ namespace Superubezpieczenia.Domain.Models
         public virtual MethodUse MethodUse { get; set; }
         [ForeignKey("IDParkingPlace")]
         public virtual ParkingPlace ParkingPlace { get; set; }
-        [ForeignKey("Username")]
-        public virtual User User { get; set; }
+        
         
 
     }

@@ -11,7 +11,9 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDMethodUse { get; set; }
+        [Required]
         public string Method { get; set; }
+        [Required]
         public double Value { get; set; }
         
 

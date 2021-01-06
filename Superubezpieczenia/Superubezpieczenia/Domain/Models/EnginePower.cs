@@ -10,8 +10,11 @@ namespace Superubezpieczenia.Domain.Models
     {
         [Key]
         public int IDEnginePower { get; set; }
+        [Required]
         public double Power { get; set; }
+        [Required]
         public double Capacity { get; set; }
+        [Required]
         public double Value { get; set; }
         
     }

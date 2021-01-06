@@ -6,6 +6,7 @@ using AutoMapper;
 using Microsoft.AspNetCore.Mvc;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.Resources.DTO;
 using Superubezpieczenia.Resources.ViewModels;
 
@@ -18,11 +19,13 @@ namespace Superubezpieczenia.Controllers
     {
         public readonly IMarkService _markService;
         public readonly IMapper _mapper;
+        public readonly ILog _log;
 
-        public MarkController(IMarkService markService, IMapper mapper)
+        public MarkController(IMarkService markService, IMapper mapper, ILog log)
         {
             _markService = markService;
             _mapper = mapper;
+            _log = log;
         }
         [HttpGet]
         public async Task<IEnumerable<Mark>> AllMarks()
@@ -36,6 +39,7 @@ namespace Superubezpieczenia.Controllers
             var mark = _mapper.Map<Mark>(markDTO);
             _markService.AddMark(mark);
             _markService.SaveChanges();
+            _log.Save(User.Identity.Name, "Dodano Markę");
             return Ok();
         }
         [HttpDelete("{id}")]

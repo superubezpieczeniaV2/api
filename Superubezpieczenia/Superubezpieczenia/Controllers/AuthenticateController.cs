@@ -98,7 +98,7 @@ namespace Superubezpieczenia.Controllers
                 return StatusCode(StatusCodes.Status500InternalServerError, new Response { Status = "Error", Message = "Nie udało się stworzyć użytkownika! Proszę sprawdzić poprawność danych i spróbować ponownie." });
             }
 
-            var message = new MailRequest(model.Email, "Logowanie w Superubeczpieczenia", "Gratuluję udało Ci sie utworzyc konto");
+            var message = new MailRequest(model.Email, "Rejestracja w Superubeczpieczenia", "Gratuluję udało Ci sie utworzyc konto");
             await _mailService.SendEmail(message);
             return Ok(new Response { Status = "Success", Message = "Użytkownik został stworzony!" });
         }
@@ -135,7 +135,7 @@ namespace Superubezpieczenia.Controllers
                 await userManager.AddToRoleAsync(user, UserRoles.Admin);
             }
 
-            var message = new MailRequest(model.Email, "Logowanie w Superubeczpieczenia", "Gratuluję udało Ci sie utworzyc konto");
+            var message = new MailRequest(model.Email, "Rejestrcja w Superubeczpieczenia", "Gratuluję udało Ci sie utworzyc konto");
             await _mailService.SendEmail(message);
             return Ok(new Response { Status = "Success", Message = "Użytkownik został stworzony!" });
         }
@@ -173,7 +173,7 @@ namespace Superubezpieczenia.Controllers
                 await userManager.AddToRoleAsync(user, UserRoles.Agent);
             }
 
-            var message = new MailRequest(model.Email, "Logowanie w Superubeczpieczenia", "Gratuluję udało Ci sie utworzyc konto");
+            var message = new MailRequest(model.Email, "Rejestracja w Superubeczpieczenia", "Gratuluję udało Ci sie utworzyc konto");
             await _mailService.SendEmail(message);
             return Ok(new Response { Status = "Success", Message = "Użytkownik został stworzony!" });
         }

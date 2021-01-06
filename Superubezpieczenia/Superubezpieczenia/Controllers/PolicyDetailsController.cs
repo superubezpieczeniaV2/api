@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
@@ -13,6 +14,7 @@ namespace Superubezpieczenia.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PolicyDetailsController : ControllerBase
     {
         public readonly IPolicyDetailsService _policyDetailsService;
@@ -34,6 +36,8 @@ namespace Superubezpieczenia.Controllers
         public ActionResult<PolicyDetailsVM> AddPolicyDetails(PolicyDetailsDTO policyDetailsDTO)
         {
             var policyDetails = _mapper.Map<PolicyDetails>(policyDetailsDTO);
+            var user = User.Identity.Name;
+            policyDetails.Username = user;
             _policyDetailsService.AddPolicyDetails(policyDetails);
             _policyDetailsService.SaveChanges();
             return Ok();

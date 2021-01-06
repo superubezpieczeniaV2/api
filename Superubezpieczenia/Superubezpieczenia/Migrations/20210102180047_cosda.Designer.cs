@@ -3,15 +3,17 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using Superubezpieczenia.Persistence.Context;
 
 namespace Superubezpieczenia.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20210102180047_cosda")]
+    partial class cosda
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -192,30 +194,6 @@ namespace Superubezpieczenia.Migrations
                     b.HasIndex("Id");
 
                     b.ToTable("Insurances");
-                });
-
-            modelBuilder.Entity("Superubezpieczenia.Domain.Models.Log", b =>
-                {
-                    b.Property<int>("IDLogger")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .UseIdentityColumn();
-
-                    b.Property<string>("ActionName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ControllerName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<DateTime>("DataLog")
-                        .HasColumnType("datetime2");
-
-                    b.Property<string>("UserName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.HasKey("IDLogger");
-
-                    b.ToTable("Loggers");
                 });
 
             modelBuilder.Entity("Superubezpieczenia.Domain.Models.Mark", b =>
