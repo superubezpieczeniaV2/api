@@ -14,10 +14,10 @@ namespace Superubezpieczenia.Logger
 
         }
 
-        public void Save(string name, string actionName)
+        public void Save(string name, string actionName, string controllerName)
         {
             Log logDTO = new Log();
-            logDTO.ControllerName = GetType().Name;
+            logDTO.ControllerName = controllerName;
             logDTO.UserName = name;
             logDTO.DataLog = DateTime.Now;
             logDTO.ActionName = actionName;

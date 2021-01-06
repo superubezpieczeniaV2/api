@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Resources.DTO;
@@ -14,6 +16,7 @@ namespace Superubezpieczenia.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    
     public class TypeInsuranceController : ControllerBase
     {
         public readonly ITypeInsuranceService _typeInsuranceService;
@@ -30,6 +33,7 @@ namespace Superubezpieczenia.Controllers
             return typeInsurance;
         }
         [HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<TypeInsuranceVM> AddTypeInsurance(TypeInsuranceDTO typeInsuranceDTO)
         {
             var typeInsurance = _mapper.Map<TypeInsurance>(typeInsuranceDTO);
@@ -38,6 +42,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult DeleteTypeInsurance(int id)
         {
             var dTypeInsurance = _typeInsuranceService.FindById(id);
@@ -50,6 +55,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateTypeInsurance(TypeInsuranceDTO typeInsuranceDTO, int id)
         {
             var uTypeInsurance = _typeInsuranceService.FindById(id);

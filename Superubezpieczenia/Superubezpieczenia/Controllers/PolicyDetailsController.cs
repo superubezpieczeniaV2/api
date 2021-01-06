@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.Resources.DTO;
 using Superubezpieczenia.Resources.ViewModels;
 
@@ -19,11 +20,14 @@ namespace Superubezpieczenia.Controllers
     {
         public readonly IPolicyDetailsService _policyDetailsService;
         public readonly IMapper _mapper;
+        public readonly ILog _log;
 
-        public PolicyDetailsController(IPolicyDetailsService policyDetailsService, IMapper mapper)
+        public PolicyDetailsController(IPolicyDetailsService policyDetailsService, IMapper mapper, ILog log)
         {
             _policyDetailsService = policyDetailsService;
             _mapper = mapper;
+            _log = log;
+
         }
         [HttpGet]
         public async Task<IEnumerable<PolicyDetails>> AllPolicys()
@@ -40,10 +44,12 @@ namespace Superubezpieczenia.Controllers
             policyDetails.Username = user;
             _policyDetailsService.AddPolicyDetails(policyDetails);
             _policyDetailsService.SaveChanges();
+            _log.Save(user, "Dodano szczegóły polisy", GetType().Name);
             return Ok();
 
         }
         [HttpDelete("{id}")]
+
         public ActionResult DeletePolicyDetails(int id)
         {
             var policyDetails = _policyDetailsService.FindById(id);
@@ -53,6 +59,7 @@ namespace Superubezpieczenia.Controllers
             }
             _policyDetailsService.DeletePolicyDetails(policyDetails);
             _policyDetailsService.SaveChanges();
+            _log.Save(User.Identity.Name, "Usunięto szczegóły polisy", GetType().Name);
             return Ok();
 
         }

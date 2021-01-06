@@ -7,6 +7,6 @@ namespace Superubezpieczenia.Logger
 {
     public interface  ILog
     {
-        public  void Save(string name, string actionName);
+        public  void Save(string name, string actionName, string controllerName);
     }
 }

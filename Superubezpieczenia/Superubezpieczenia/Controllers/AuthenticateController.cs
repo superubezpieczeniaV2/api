@@ -5,6 +5,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
 using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.MailSender;
 using Superubezpieczenia.MailSender.Models;
 using System;
@@ -25,13 +26,16 @@ namespace Superubezpieczenia.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration _configuration;
         private readonly IMailService _mailService;
+        private readonly ILog _log;
 
-        public AuthenticateController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, IMailService mailService)
+        public AuthenticateController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, IMailService mailService, ILog log)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;
             _configuration = configuration;
             _mailService = mailService;
+            _log = log;
+
         }
 
         [HttpPost]
@@ -73,6 +77,7 @@ namespace Superubezpieczenia.Controllers
 
                 }); 
             }
+            _log.Save(model.Username, "Użytkownik zalogował się", GetType().Name);
             return Unauthorized();
         }
         
@@ -100,6 +105,7 @@ namespace Superubezpieczenia.Controllers
 
             var message = new MailRequest(model.Email, "Rejestracja w Superubeczpieczenia", "Gratuluję udało Ci sie utworzyc konto");
             await _mailService.SendEmail(message);
+            _log.Save(model.Username, "Użytkownik został stworzony", GetType().Name);
             return Ok(new Response { Status = "Success", Message = "Użytkownik został stworzony!" });
         }
 
@@ -137,6 +143,7 @@ namespace Superubezpieczenia.Controllers
 
             var message = new MailRequest(model.Email, "Rejestrcja w Superubeczpieczenia", "Gratuluję udało Ci sie utworzyc konto");
             await _mailService.SendEmail(message);
+            _log.Save(model.Username, "Administrator został stworzony", GetType().Name);
             return Ok(new Response { Status = "Success", Message = "Użytkownik został stworzony!" });
         }
 
@@ -175,6 +182,7 @@ namespace Superubezpieczenia.Controllers
 
             var message = new MailRequest(model.Email, "Rejestracja w Superubeczpieczenia", "Gratuluję udało Ci sie utworzyc konto");
             await _mailService.SendEmail(message);
+            _log.Save(model.Username, "Konsultant został stworzony", GetType().Name);
             return Ok(new Response { Status = "Success", Message = "Użytkownik został stworzony!" });
         }
     }

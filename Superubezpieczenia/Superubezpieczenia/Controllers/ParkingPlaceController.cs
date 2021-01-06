@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Resources.DTO;
@@ -32,6 +34,7 @@ namespace Superubezpieczenia.Controllers
        
         
         [HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<ParkingPlaceVM> AddParkingPlace(ParkingPlaceDTO parkingPlaceDTO)
         {
             var parkingPlace = _mapper.Map<ParkingPlace>(parkingPlaceDTO);
@@ -40,6 +43,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult DeleteParkingPlace(int id)
         {
             var parkingPlace = _parkingPlaceService.FindById(id);
@@ -52,6 +56,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateParkingPlace(ParkingPlaceDTO parkingPlaceDTO, int id)
         {
             var uMark = _parkingPlaceService.FindById(id);

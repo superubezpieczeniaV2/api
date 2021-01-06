@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Resources.DTO;
@@ -31,6 +33,7 @@ namespace Superubezpieczenia.Controllers
             return owner;
         }
         [HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<TypeOwnerVM> AddTypeOwner(TypeOwnerDTO typeOwnerDTO)
         {
             var owner = _mapper.Map<TypeOwner>(typeOwnerDTO);
@@ -39,6 +42,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult DeleteTypeOwner(int id)
         {
             var owner = _ownerService.FindById(id);
@@ -52,6 +56,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateTypeOwner(TypeOwnerDTO typeOwnerDTO, int id)
         {
             var owner = _ownerService.FindById(id);

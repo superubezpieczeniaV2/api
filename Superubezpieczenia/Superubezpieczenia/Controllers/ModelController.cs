@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Resources.DTO;
@@ -38,6 +40,7 @@ namespace Superubezpieczenia.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<ModelVM> AddModel(ModelDTO modelDTO)
         {
             var model = _mapper.Map<Model>(modelDTO);
@@ -46,6 +49,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult DeleteModel(int id)
         {
             var dModel = _modelService.FindById(id);
@@ -58,6 +62,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateModel(ModelDTO modelDTO, int id)
         {
             var uMark = _modelService.FindById(id);

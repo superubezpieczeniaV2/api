@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Resources.DTO;
@@ -32,6 +34,7 @@ namespace Superubezpieczenia.Controllers
 
         }
         [HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<EnginePowerVM> AddEnginePower(EnginePowerDTO enginepowerDTO)
         {
             var enginepower = _mapper.Map<EnginePower>(enginepowerDTO);
@@ -41,6 +44,7 @@ namespace Superubezpieczenia.Controllers
 
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult DeleteEnginePower(int id)
         {
             var dEnginePower = _enginePowerService.FindById(id);
@@ -54,6 +58,7 @@ namespace Superubezpieczenia.Controllers
 
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateEnginePower(EnginePowerDTO enginepowerDTO, int id)
         {
             var uEnginePower = _enginePowerService.FindById(id);

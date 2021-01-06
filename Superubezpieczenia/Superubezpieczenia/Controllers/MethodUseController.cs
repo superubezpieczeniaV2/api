@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Resources.DTO;
@@ -32,6 +34,7 @@ namespace Superubezpieczenia.Controllers
 
         }
         [HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<MethodUseVM> AddMethodUse(MethodUseDTO methodUseDTO)
         {
             var model = _mapper.Map<MethodUse>(methodUseDTO);
@@ -40,6 +43,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult DeleteMethodUse(int id)
         {
             var dMethodUse = _methodUseService.FindById(id);
@@ -52,6 +56,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateMethodUse(MethodUseDTO methodUseDTO, int id)
         {
             var uMark = _methodUseService.FindById(id);

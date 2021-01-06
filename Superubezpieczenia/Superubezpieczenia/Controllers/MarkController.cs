@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Logger;
@@ -34,15 +36,17 @@ namespace Superubezpieczenia.Controllers
             return mark;
         }
         [HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<MarkVM> AddMark(MarkDTO markDTO)
         {
             var mark = _mapper.Map<Mark>(markDTO);
             _markService.AddMark(mark);
             _markService.SaveChanges();
-            _log.Save(User.Identity.Name, "Dodano Markę");
+            _log.Save(User.Identity.Name, "Dodano Markę", GetType().Name);
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult DeleteMark(int id)
         {
             var dMark = _markService.FindById(id);
@@ -53,9 +57,11 @@ namespace Superubezpieczenia.Controllers
             
             _markService.DeleteMark(dMark);
             _markService.SaveChanges();
+            _log.Save(User.Identity.Name, "Usunięto Markę", GetType().Name);
             return Ok();
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateMark(MarkDTO markDTO, int id)
         {
             var uMark = _markService.FindById( id);
@@ -66,6 +72,7 @@ namespace Superubezpieczenia.Controllers
             _mapper.Map(markDTO, uMark);
             _markService.UpdateMark(uMark);
             _markService.SaveChanges();
+            _log.Save(User.Identity.Name, "Edytowano Markę", GetType().Name);
 
             return Ok();
         }

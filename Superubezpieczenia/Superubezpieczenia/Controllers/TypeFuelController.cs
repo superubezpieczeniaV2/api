@@ -3,8 +3,10 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Resources.DTO;
@@ -25,12 +27,14 @@ namespace Superubezpieczenia.Controllers
             _mapper = mapper;
         }
         [HttpGet]
+        
         public async Task<IEnumerable<TypeFuel>> AllTypeFuel()
         {
             var typeFuel = await _typeFuelService.AllTypeFuel();
             return typeFuel;
         }
         [HttpPost]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult<TypeFuelDTO> AddTypeFuel(TypeFuelDTO typeFuelDTO)
         {
             var typeFuel = _mapper.Map<TypeFuel>(typeFuelDTO);
@@ -39,6 +43,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpDelete("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult DeleteTypeFuel(int id)
         {
             var dTypeFuel = _typeFuelService.FindById(id);
@@ -51,6 +56,7 @@ namespace Superubezpieczenia.Controllers
             return Ok();
         }
         [HttpPut("{id}")]
+        [Authorize(Roles = UserRoles.Admin)]
         public ActionResult UpdateTypeFuel(TypeFuelDTO typeFuelDTO, int id)
         {
             var uTypeFuel = _typeFuelService.FindById(id);

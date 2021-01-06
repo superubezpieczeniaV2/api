@@ -3,7 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using AutoMapper;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
 using Superubezpieczenia.Resources.DTO;
@@ -13,6 +15,7 @@ namespace Superubezpieczenia.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = UserRoles.Agent)]
     public class InsuranceController : Controller
     {
         public readonly IInsuranceService _insuranceService;
@@ -24,14 +27,14 @@ namespace Superubezpieczenia.Controllers
             _mapper = mapper;
         }
         [HttpGet]
-        public async Task<IEnumerable<Insurance>> AllEnginePower()
+        public async Task<IEnumerable<Insurance>> AllInsurance()
         {
             var insurance = await _insuranceService.AllInsurance();
             return insurance;
 
         }
         [HttpPost]
-        public ActionResult<InsuranceVM> AddEnginePower(InsuranceDTO insuranceDTO)
+        public ActionResult<InsuranceVM> AddInsurance(InsuranceDTO insuranceDTO)
         {
             var insurance = _mapper.Map<Insurance>(insuranceDTO);
             _insuranceService.AddInsurance(insurance);

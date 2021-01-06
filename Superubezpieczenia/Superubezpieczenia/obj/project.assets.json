@@ -7122,11 +7122,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
+      "projectUniqueName": "C:\\Users\\aleks\\OneDrive\\Pulpit\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
       "projectName": "Superubezpieczenia",
-      "projectPath": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
+      "projectPath": "C:\\Users\\aleks\\OneDrive\\Pulpit\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
       "packagesPath": "C:\\Users\\aleks\\.nuget\\packages\\",
-      "outputPath": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\obj\\",
+      "outputPath": "C:\\Users\\aleks\\OneDrive\\Pulpit\\api\\Superubezpieczenia\\Superubezpieczenia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\aleks\\AppData\\Roaming\\NuGet\\NuGet.Config",
