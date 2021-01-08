@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.Resources.DTO;
 using Superubezpieczenia.Resources.ViewModels;
 
@@ -20,10 +21,12 @@ namespace Superubezpieczenia.Controllers
     {
         public readonly IMethodUseService _methodUseService;
         public readonly IMapper _mapper;
-        public MethodUseController(IMethodUseService methodUseService, IMapper mapper)
+        public readonly ILogService _log;
+        public MethodUseController(IMethodUseService methodUseService, IMapper mapper, ILogService log)
         {
             _methodUseService = methodUseService;
             _mapper = mapper;
+            _log = log;
         }
 
         [HttpGet]
@@ -40,6 +43,7 @@ namespace Superubezpieczenia.Controllers
             var model = _mapper.Map<MethodUse>(methodUseDTO);
             _methodUseService.AddMethodUse(model);
             _methodUseService.SaveChanges();
+            _log.Save(User.Identity.Name, "Dodano sposób użytkowania", GetType().Name);
             return Ok();
         }
         [HttpDelete("{id}")]
@@ -53,6 +57,7 @@ namespace Superubezpieczenia.Controllers
             }
             _methodUseService.DeleteMethodUse(dMethodUse);
             _methodUseService.SaveChanges();
+            _log.Save(User.Identity.Name, "Usunięto sposób użytkowania", GetType().Name);
             return Ok();
         }
         [HttpPut("{id}")]
@@ -67,7 +72,7 @@ namespace Superubezpieczenia.Controllers
             _mapper.Map(methodUseDTO, uMark);
             _methodUseService.UpdateMethodUse(uMark);
             _methodUseService.SaveChanges();
-
+            _log.Save(User.Identity.Name, "Edytowano sposób użytkowania", GetType().Name);
             return Ok();
         }
     }

@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.Resources.DTO;
 using Superubezpieczenia.Resources.ViewModels;
 
@@ -20,10 +21,12 @@ namespace Superubezpieczenia.Controllers
     {
         public readonly IParkingPlaceService _parkingPlaceService;
         public readonly IMapper _mapper;
-        public ParkingPlaceController(IParkingPlaceService parkingPlaceService, IMapper mapper)
+        public readonly ILogService _log;
+        public ParkingPlaceController(IParkingPlaceService parkingPlaceService, IMapper mapper, ILogService log)
         {
             _parkingPlaceService = parkingPlaceService;
             _mapper = mapper;
+            _log = log;
         }
         [HttpGet]
         public async Task<IEnumerable<ParkingPlace>> AllParkingPlace()
@@ -40,6 +43,7 @@ namespace Superubezpieczenia.Controllers
             var parkingPlace = _mapper.Map<ParkingPlace>(parkingPlaceDTO);
             _parkingPlaceService.AddParkingPlace(parkingPlace);
             _parkingPlaceService.SaveChanges();
+            _log.Save(User.Identity.Name, "Dodano rodzaj miejsca parkingowego ", GetType().Name);
             return Ok();
         }
         [HttpDelete("{id}")]
@@ -53,6 +57,7 @@ namespace Superubezpieczenia.Controllers
             }
             _parkingPlaceService.DeleteParkingPlace(parkingPlace);
             _parkingPlaceService.SaveChanges();
+            _log.Save(User.Identity.Name, "Usunięto rodzaj miejsca parkingowego ", GetType().Name);
             return Ok();
         }
         [HttpPut("{id}")]
@@ -67,7 +72,7 @@ namespace Superubezpieczenia.Controllers
             _mapper.Map(parkingPlaceDTO, uMark);
             _parkingPlaceService.UpdateParkingPlace(uMark);
             _parkingPlaceService.SaveChanges();
-
+            _log.Save(User.Identity.Name, "Edytowano rodzaj miejsca parkingowego ", GetType().Name);
             return Ok();
         }
     }

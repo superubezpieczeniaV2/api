@@ -20,9 +20,9 @@ namespace Superubezpieczenia.Controllers
     {
         public readonly IPolicyDetailsService _policyDetailsService;
         public readonly IMapper _mapper;
-        public readonly ILog _log;
+        public readonly ILogService _log;
 
-        public PolicyDetailsController(IPolicyDetailsService policyDetailsService, IMapper mapper, ILog log)
+        public PolicyDetailsController(IPolicyDetailsService policyDetailsService, IMapper mapper, ILogService log)
         {
             _policyDetailsService = policyDetailsService;
             _mapper = mapper;

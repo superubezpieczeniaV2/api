@@ -21,9 +21,9 @@ namespace Superubezpieczenia.Controllers
     {
         public readonly IMarkService _markService;
         public readonly IMapper _mapper;
-        public readonly ILog _log;
+        public readonly ILogService _log;
 
-        public MarkController(IMarkService markService, IMapper mapper, ILog log)
+        public MarkController(IMarkService markService, IMapper mapper, ILogService log)
         {
             _markService = markService;
             _mapper = mapper;

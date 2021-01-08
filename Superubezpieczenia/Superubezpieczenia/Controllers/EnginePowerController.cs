@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.Resources.DTO;
 using Superubezpieczenia.Resources.ViewModels;
 
@@ -20,11 +21,12 @@ namespace Superubezpieczenia.Controllers
     {
         public readonly IEnginePowerService _enginePowerService;
         public readonly IMapper _mapper;
-
-        public EnginePowerController(IEnginePowerService enginePowerService, IMapper mapper)
+        public readonly ILogService _log;
+        public EnginePowerController(IEnginePowerService enginePowerService, IMapper mapper, ILogService log)
         {
             _enginePowerService = enginePowerService;
             _mapper = mapper;
+            _log = log;
         }
         [HttpGet]
         public async Task<IEnumerable<EnginePower>> AllEnginePower()
@@ -40,6 +42,8 @@ namespace Superubezpieczenia.Controllers
             var enginepower = _mapper.Map<EnginePower>(enginepowerDTO);
             _enginePowerService.AddEnginePower(enginepower);
             _enginePowerService.SaveChanges();
+            _log.Save(User.Identity.Name, "Dodano rodzaj paliwa", GetType().Name);
+
             return Ok();
 
         }
@@ -54,6 +58,7 @@ namespace Superubezpieczenia.Controllers
             }
             _enginePowerService.DeleteEnginePower(dEnginePower);
             _enginePowerService.SaveChanges();
+            _log.Save(User.Identity.Name, "Usunięto rodzaj paliwa", GetType().Name);
             return Ok();
 
         }
@@ -69,7 +74,7 @@ namespace Superubezpieczenia.Controllers
             _mapper.Map(enginepowerDTO, uEnginePower);
             _enginePowerService.UpdateEnginePower(uEnginePower);
             _enginePowerService.SaveChanges();
-
+            _log.Save(User.Identity.Name, "Edytowano rodzaj paliwa", GetType().Name);
             return Ok();
         }
     }

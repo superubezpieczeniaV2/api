@@ -26,9 +26,9 @@ namespace Superubezpieczenia.Controllers
         private readonly RoleManager<IdentityRole> roleManager;
         private readonly IConfiguration _configuration;
         private readonly IMailService _mailService;
-        private readonly ILog _log;
+        private readonly ILogService _log;
 
-        public AuthenticateController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, IMailService mailService, ILog log)
+        public AuthenticateController(UserManager<User> userManager, RoleManager<IdentityRole> roleManager, IConfiguration configuration, IMailService mailService, ILogService log)
         {
             this.userManager = userManager;
             this.roleManager = roleManager;

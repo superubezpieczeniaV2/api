@@ -86,7 +86,8 @@ namespace Superubezpieczenia
             services.Configure<MailConfig>(Configuration.GetSection("Mail"));
             services.AddSingleton<IMailService, MailService>();
 
-            services.AddScoped<ILog, DBLogger>();
+            services.AddScoped<ILogService, LogService>();
+            services.AddScoped<ILogRepository, LogRepository>();
 
             services.AddScoped<IPolicyDetailsService, PolicyDetailsService>();
             services.AddScoped<IPolicyDetailsRepository, PolicyDetailsRepository>();

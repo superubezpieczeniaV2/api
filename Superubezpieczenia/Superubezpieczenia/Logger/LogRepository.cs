@@ -1,4 +1,5 @@
-﻿using Superubezpieczenia.Domain.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Persistence.Context;
 using System;
 using System.Collections.Generic;
@@ -7,11 +8,21 @@ using System.Threading.Tasks;
 
 namespace Superubezpieczenia.Logger
 {
-    public class DBLogger : LogBase, ILog
+    public class LogRepository : LogBase, ILogRepository
     {
-        public DBLogger(ApplicationDbContext context) : base(context)
+        public LogRepository(ApplicationDbContext context) : base(context)
         {
 
+        }
+
+        public async Task<IEnumerable<Log>> All()
+        {
+            return await _context.Loggers.ToListAsync();
+        }
+
+        public Log  FindByDate(DateTime date)
+        {
+            return (Log)_context.Loggers.Where(x => x.DataLog == date );
         }
 
         public void Save(string name, string actionName, string controllerName)
@@ -26,8 +37,5 @@ namespace Superubezpieczenia.Logger
 
 
         }
-
-        
-        
     }
 }

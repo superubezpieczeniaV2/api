@@ -1,4 +1,5 @@
-﻿using System;
+﻿
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -9,6 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.Resources.DTO;
 using Superubezpieczenia.Resources.ViewModels;
 
@@ -21,10 +23,12 @@ namespace Superubezpieczenia.Controllers
     {
         public readonly ITypeInsuranceService _typeInsuranceService;
         public readonly IMapper _mapper;
-        public TypeInsuranceController(ITypeInsuranceService typeInsuranceService, IMapper mapper)
+        public readonly ILogService _log;
+        public TypeInsuranceController(ITypeInsuranceService typeInsuranceService, IMapper mapper, ILogService log)
         {
             _typeInsuranceService = typeInsuranceService;
             _mapper = mapper;
+            _log = log;
         }
         [HttpGet]
         public async Task<IEnumerable<TypeInsurance>> AllTypeInsurance()
@@ -39,6 +43,7 @@ namespace Superubezpieczenia.Controllers
             var typeInsurance = _mapper.Map<TypeInsurance>(typeInsuranceDTO);
             _typeInsuranceService.AddTypeInsurance(typeInsurance);
             _typeInsuranceService.SaveChanges();
+            _log.Save(User.Identity.Name, "Dodano rodzaj ubezpieczenia", GetType().Name);
             return Ok();
         }
         [HttpDelete("{id}")]
@@ -52,6 +57,7 @@ namespace Superubezpieczenia.Controllers
             }
             _typeInsuranceService.DeleteTypeInsurance(dTypeInsurance);
             _typeInsuranceService.SaveChanges();
+            _log.Save(User.Identity.Name, "Usunięto rodzaj ubezpieczenia", GetType().Name);
             return Ok();
         }
         [HttpPut("{id}")]
@@ -66,7 +72,7 @@ namespace Superubezpieczenia.Controllers
             _mapper.Map(typeInsuranceDTO, uTypeInsurance);
             _typeInsuranceService.UpdateTypeInsurance(uTypeInsurance);
             _typeInsuranceService.SaveChanges();
-
+            _log.Save(User.Identity.Name, "Edytowano rodzaj ubezpieczenia", GetType().Name);
             return Ok();
         }
     }

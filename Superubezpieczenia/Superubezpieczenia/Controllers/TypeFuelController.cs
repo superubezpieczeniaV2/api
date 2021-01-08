@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Mvc;
 using Superubezpieczenia.Authentication;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.Resources.DTO;
 using Superubezpieczenia.Resources.ViewModels;
 
@@ -20,11 +21,13 @@ namespace Superubezpieczenia.Controllers
     {
         public readonly ITypeFuelService _typeFuelService;
         public readonly IMapper _mapper;
+        public readonly ILogService _log;
 
-        public TypeFuelController(ITypeFuelService typeFuelService, IMapper mapper)
+        public TypeFuelController(ITypeFuelService typeFuelService, IMapper mapper, ILogService log)
         {
             _typeFuelService = typeFuelService;
             _mapper = mapper;
+            _log = log;
         }
         [HttpGet]
         
@@ -40,6 +43,7 @@ namespace Superubezpieczenia.Controllers
             var typeFuel = _mapper.Map<TypeFuel>(typeFuelDTO);
             _typeFuelService.AddTypeFuel(typeFuel);
             _typeFuelService.SaveChanges();
+            _log.Save(User.Identity.Name, "Dodano rodzaj paliwa", GetType().Name);
             return Ok();
         }
         [HttpDelete("{id}")]
@@ -53,6 +57,7 @@ namespace Superubezpieczenia.Controllers
             }
             _typeFuelService.DeleteTypeFuel(dTypeFuel);
             _typeFuelService.SaveChanges();
+            _log.Save(User.Identity.Name, "Usunięto rodzaj paliwa", GetType().Name);
             return Ok();
         }
         [HttpPut("{id}")]
@@ -67,7 +72,7 @@ namespace Superubezpieczenia.Controllers
             _mapper.Map(typeFuelDTO, uTypeFuel);
             _typeFuelService.UpdateTypeFuel(uTypeFuel);
             _typeFuelService.SaveChanges();
-
+            _log.Save(User.Identity.Name, "Edytowano rodzaj paliwa", GetType().Name);
             return Ok();
         }
     }

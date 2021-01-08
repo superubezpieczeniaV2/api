@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "8rOfmM8IdO2+7KwUeLyAWsfiplQrWnnlVVIb1Doxe6Z9qZzBKsTjrIyNG8YDCTnAZC1p1uZruu6fcHO7rdpD1g==",
+  "dgSpecHash": "+5M65EIkmzMxh1kq9g2yvWZKOZZmssIBXMXFyuU/OS8gyYTWGER6IYFfjh+YYAi5eE9bbw+HZWbPfor8yL3pLQ==",
   "success": true,
-  "projectFilePath": "C:\\Users\\aleks\\OneDrive\\Pulpit\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
+  "projectFilePath": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\aleks\\.nuget\\packages\\automapper\\10.1.1\\automapper.10.1.1.nupkg.sha512",
     "C:\\Users\\aleks\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\8.1.0\\automapper.extensions.microsoft.dependencyinjection.8.1.0.nupkg.sha512",
