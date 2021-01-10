@@ -6,6 +6,11 @@ namespace Superubezpieczenia.Persistence.Context
 {
     public class ApplicationDbContext : IdentityDbContext<User>
     {
+        public ApplicationDbContext(string connectionString) : base(GetOptions(connectionString))
+        {
+
+        }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
