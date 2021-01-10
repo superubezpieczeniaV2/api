@@ -102,7 +102,7 @@ namespace Superubezpieczenia.Tests
             var context = new ApplicationDbContext(ConnectionString);
             var repository = new MarkRepository(context);
             var service = new MarkService(repository);
-            var controller = new MarkController(service, null);
+            var controller = new MarkController(service, null, null);
 
             //Act
             var result = controller.AllMarks();
@@ -117,7 +117,7 @@ namespace Superubezpieczenia.Tests
 
         private MarkController MockController()
         {
-            return new MarkController(_markService, _mapper);
+            return new MarkController(_markService, _mapper, null);
         }
     }
 }

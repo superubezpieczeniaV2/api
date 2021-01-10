@@ -27,6 +27,12 @@ namespace Superubezpieczenia.Persistence.Context
         public virtual DbSet<TypeFuel> TypeFuels { get; set; }
         public virtual DbSet<TypeOwner> TypeOwners { get; set; }
         public virtual DbSet<Log> Loggers { get; set; }
+
+        private static DbContextOptions GetOptions(string connectionString)
+        {
+            return SqlServerDbContextOptionsExtensions.UseSqlServer(new DbContextOptionsBuilder(), connectionString).Options;
+        }
+
         protected override void OnModelCreating(ModelBuilder builder)
         {
             base.OnModelCreating(builder);
