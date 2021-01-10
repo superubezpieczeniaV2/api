@@ -57,7 +57,7 @@ namespace Superubezpieczenia.Controllers
             
             _markService.DeleteMark(dMark);
             _markService.SaveChanges();
-            _log.Save(User.Identity.Name, "Usunięto Markę", GetType().Name);
+            _log.Save(User?.Identity.Name, "Usunięto Markę", GetType().Name);
             return Ok();
         }
         [HttpPut("{id}")]

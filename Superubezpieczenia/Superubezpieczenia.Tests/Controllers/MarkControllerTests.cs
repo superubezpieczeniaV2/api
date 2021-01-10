@@ -6,9 +6,11 @@ using NSubstitute;
 using Superubezpieczenia.Controllers;
 using Superubezpieczenia.Domain.Models;
 using Superubezpieczenia.Domain.Services;
+using Superubezpieczenia.Logger;
 using Superubezpieczenia.Persistence.Context;
 using Superubezpieczenia.Persistence.Repositories;
 using Superubezpieczenia.Services;
+using System.Security.Claims;
 
 namespace Superubezpieczenia.Tests
 {
@@ -19,12 +21,15 @@ namespace Superubezpieczenia.Tests
 
         private IMarkService _markService;
         private IMapper _mapper;
+        private ILogService _log;
 
         [TestInitialize]
         public void Initialize()
         {
             _markService = Substitute.For<IMarkService>();
             _mapper = Substitute.For<IMapper>();
+            _log = Substitute.For<ILogService>();
+
         }
 
         #region Unit tests
@@ -117,7 +122,7 @@ namespace Superubezpieczenia.Tests
 
         private MarkController MockController()
         {
-            return new MarkController(_markService, _mapper, null);
+            return new MarkController(_markService, _mapper, _log);
         }
     }
 }
