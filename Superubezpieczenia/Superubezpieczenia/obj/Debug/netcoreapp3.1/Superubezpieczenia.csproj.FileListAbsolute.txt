@@ -154,9 +154,6 @@ D:\projekt-rewak\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\S
 D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\MailKit.dll
 D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\MimeKit.dll
 D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\BouncyCastle.Crypto.dll
-D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.csproj.CoreCompileInputs.cache
-D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cs
-D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cache
 C:\Users\aleks\OneDrive\Pulpit\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\appsettings.Development.json
 C:\Users\aleks\OneDrive\Pulpit\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\appsettings.json
 C:\Users\aleks\OneDrive\Pulpit\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
@@ -238,3 +235,8 @@ C:\Users\aleks\OneDrive\Pulpit\api\Superubezpieczenia\Superubezpieczenia\obj\Deb
 C:\Users\aleks\OneDrive\Pulpit\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.dll
 C:\Users\aleks\OneDrive\Pulpit\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.pdb
 C:\Users\aleks\OneDrive\Pulpit\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.genruntimeconfig.cache
+D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\Pomelo.EntityFrameworkCore.MySql.dll
+D:\api\Superubezpieczenia\Superubezpieczenia\bin\Debug\netcoreapp3.1\Pomelo.JsonObject.dll
+D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.csproj.CoreCompileInputs.cache
+D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cs
+D:\api\Superubezpieczenia\Superubezpieczenia\obj\Debug\netcoreapp3.1\Superubezpieczenia.MvcApplicationPartsAssemblyInfo.cache

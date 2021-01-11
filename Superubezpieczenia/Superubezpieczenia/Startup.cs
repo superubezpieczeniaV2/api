@@ -53,9 +53,12 @@ namespace Superubezpieczenia
                         Version = "v1"
                     }) ;
             });
-            services.AddDbContext<ApplicationDbContext>(options => {
-                options.UseSqlServer(Configuration.GetConnectionString("SuperubezpieczeniaDbContext"));
-            });
+             services.AddDbContext<ApplicationDbContext>(options => {
+             options.UseSqlServer(Configuration.GetConnectionString("SuperubezpieczeniaDbContext"));
+             });
+           /* string mySqlConnectionStr = Configuration.GetConnectionString("SuperubezpieczeniaDbContext");
+            services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(mySqlConnectionStr));*/
+
             // For Identity  
             services.AddIdentity<User, IdentityRole>()
                 .AddEntityFrameworkStores<ApplicationDbContext>()

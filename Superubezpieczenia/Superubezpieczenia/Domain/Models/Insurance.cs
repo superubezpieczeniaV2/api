@@ -12,8 +12,10 @@ namespace Superubezpieczenia.Domain.Models
         [Key]
         public int IDInsurance { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime StartDate { get; set; }
         [Required]
+        [DisplayFormat(DataFormatString = "{0:MM/dd/yyyy}")]
         public DateTime EndDate { get; set; }
         public string Id { get; set; }
 
