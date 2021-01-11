@@ -15,7 +15,7 @@ namespace Superubezpieczenia.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-   // [Authorize(Roles = UserRoles.Agent)]
+    [Authorize(Roles = UserRoles.Agent)]
     public class InsuranceController : Controller
     {
         public readonly IInsuranceService _insuranceService;

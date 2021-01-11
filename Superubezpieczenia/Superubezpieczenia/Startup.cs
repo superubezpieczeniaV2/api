@@ -125,6 +125,9 @@ namespace Superubezpieczenia
             services.AddScoped<IInsuranceService, InsuranceService>();
             services.AddScoped<IInsuranceRepository, InsuranceRepository>();
 
+            services.AddScoped<IUserInsuranceService, UserInsuranceService>();
+            services.AddScoped<IUserInsuranceRepository, UserInsuranceRepository>();
+
             services.AddAutoMapper(typeof(ModelToResourceProfile));
         }
 
