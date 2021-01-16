@@ -37,7 +37,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPost]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<EnginePowerVM> AddEnginePower(EnginePowerDTO enginepowerDTO)
+        public ActionResult<EnginePowerVM> AddEnginePower([FromBody] EnginePowerDTO enginepowerDTO)
         {
             var enginepower = _mapper.Map<EnginePower>(enginepowerDTO);
             _enginePowerService.AddEnginePower(enginepower);
@@ -64,7 +64,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult UpdateEnginePower(EnginePowerDTO enginepowerDTO, int id)
+        public ActionResult UpdateEnginePower([FromBody] EnginePowerDTO enginepowerDTO, int id)
         {
             var uEnginePower = _enginePowerService.FindById(id);
             if (uEnginePower == null)

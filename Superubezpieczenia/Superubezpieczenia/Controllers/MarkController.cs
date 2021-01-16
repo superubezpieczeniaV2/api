@@ -37,7 +37,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPost]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<MarkVM> AddMark(MarkDTO markDTO)
+        public ActionResult<MarkVM> AddMark([FromBody] MarkDTO markDTO)
         {
             var mark = _mapper.Map<Mark>(markDTO);
             _markService.AddMark(mark);
@@ -62,7 +62,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult UpdateMark(MarkDTO markDTO, int id)
+        public ActionResult UpdateMark([FromBody] MarkDTO markDTO, int id)
         {
             var uMark = _markService.FindById( id);
             if (uMark == null)

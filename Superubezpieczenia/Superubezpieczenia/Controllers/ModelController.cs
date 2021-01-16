@@ -44,7 +44,7 @@ namespace Superubezpieczenia.Controllers
 
         [HttpPost]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<ModelVM> AddModel(ModelDTO modelDTO)
+        public ActionResult<ModelVM> AddModel([FromBody] ModelDTO modelDTO)
         {
             var model = _mapper.Map<Model>(modelDTO);
             _modelService.AddModel(model);
@@ -69,7 +69,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult UpdateModel(ModelDTO modelDTO, int id)
+        public ActionResult UpdateModel([FromBody] ModelDTO modelDTO, int id)
         {
             var uMark = _modelService.FindById(id);
             if (uMark == null)

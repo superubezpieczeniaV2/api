@@ -38,7 +38,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPost]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<MethodUseVM> AddMethodUse(MethodUseDTO methodUseDTO)
+        public ActionResult<MethodUseVM> AddMethodUse([FromBody] MethodUseDTO methodUseDTO)
         {
             var model = _mapper.Map<MethodUse>(methodUseDTO);
             _methodUseService.AddMethodUse(model);
@@ -62,7 +62,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult UpdateMethodUse(MethodUseDTO methodUseDTO, int id)
+        public ActionResult UpdateMethodUse([FromBody] MethodUseDTO methodUseDTO, int id)
         {
             var uMark = _methodUseService.FindById(id);
             if (uMark == null)

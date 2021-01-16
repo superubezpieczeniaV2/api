@@ -38,7 +38,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPost]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<TypeOwnerVM> AddTypeOwner(TypeOwnerDTO typeOwnerDTO)
+        public ActionResult<TypeOwnerVM> AddTypeOwner([FromBody] TypeOwnerDTO typeOwnerDTO)
         {
             var owner = _mapper.Map<TypeOwner>(typeOwnerDTO);
             _ownerService.AddTypeOwner(owner);
@@ -63,7 +63,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult UpdateTypeOwner(TypeOwnerDTO typeOwnerDTO, int id)
+        public ActionResult UpdateTypeOwner([FromBody] TypeOwnerDTO typeOwnerDTO, int id)
         {
             var owner = _ownerService.FindById(id);
             if (owner == null)

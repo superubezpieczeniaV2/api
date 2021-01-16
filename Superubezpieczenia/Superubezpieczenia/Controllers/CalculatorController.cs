@@ -19,7 +19,7 @@ namespace Superubezpieczenia.Controllers
             _calculatorService = calculatorService;
         }
         [HttpPost]
-        public  ActionResult InsurancePrice(CalculatorDTO calculatorDTO)
+        public  ActionResult InsurancePrice([FromBody] CalculatorDTO calculatorDTO)
         {
 
             double result = _calculatorService.InsurancePrice(calculatorDTO);

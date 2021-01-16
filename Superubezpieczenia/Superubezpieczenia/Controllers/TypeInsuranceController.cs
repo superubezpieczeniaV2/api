@@ -38,12 +38,12 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPost]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<TypeInsuranceVM> AddTypeInsurance(TypeInsuranceDTO typeInsuranceDTO)
+        public ActionResult<TypeInsuranceVM> AddTypeInsurance([FromBody] TypeInsuranceDTO typeInsuranceDTO)
         {
             var typeInsurance = _mapper.Map<TypeInsurance>(typeInsuranceDTO);
             _typeInsuranceService.AddTypeInsurance(typeInsurance);
             _typeInsuranceService.SaveChanges();
-            _log.Save(User.Identity.Name, "Dodano rodzaj ubezpieczenia", GetType().Name);
+           _log.Save(User.Identity.Name, "Dodano rodzaj ubezpieczenia", GetType().Name);
             return Ok();
         }
         [HttpDelete("{id}")]
@@ -62,7 +62,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult UpdateTypeInsurance(TypeInsuranceDTO typeInsuranceDTO, int id)
+        public ActionResult UpdateTypeInsurance([FromBody] TypeInsuranceDTO typeInsuranceDTO, int id)
         {
             var uTypeInsurance = _typeInsuranceService.FindById(id);
             if (uTypeInsurance == null)

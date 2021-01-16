@@ -37,7 +37,7 @@ namespace Superubezpieczenia.Controllers
 
         }
         [HttpPost]
-        public ActionResult<PolicyDetailsVM> AddPolicyDetails(PolicyDetailsDTO policyDetailsDTO)
+        public ActionResult<PolicyDetailsVM> AddPolicyDetails([FromBody] PolicyDetailsDTO policyDetailsDTO)
         {
             var policyDetails = _mapper.Map<PolicyDetails>(policyDetailsDTO);
             var user = User.Identity.Name;

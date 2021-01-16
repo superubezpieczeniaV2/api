@@ -38,7 +38,7 @@ namespace Superubezpieczenia.Controllers
         
         [HttpPost]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<ParkingPlaceVM> AddParkingPlace(ParkingPlaceDTO parkingPlaceDTO)
+        public ActionResult<ParkingPlaceVM> AddParkingPlace([FromBody] ParkingPlaceDTO parkingPlaceDTO)
         {
             var parkingPlace = _mapper.Map<ParkingPlace>(parkingPlaceDTO);
             _parkingPlaceService.AddParkingPlace(parkingPlace);
@@ -62,7 +62,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult UpdateParkingPlace(ParkingPlaceDTO parkingPlaceDTO, int id)
+        public ActionResult UpdateParkingPlace([FromBody] ParkingPlaceDTO parkingPlaceDTO, int id)
         {
             var uMark = _parkingPlaceService.FindById(id);
             if (uMark == null)

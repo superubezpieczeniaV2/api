@@ -7189,19 +7189,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Szczepan\\.nuget\\packages\\": {}
+    "C:\\Users\\aleks\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Szczepan\\Downloads\\api-test3\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
+      "projectUniqueName": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
       "projectName": "Superubezpieczenia",
-      "projectPath": "C:\\Users\\Szczepan\\Downloads\\api-test3\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
-      "packagesPath": "C:\\Users\\Szczepan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Szczepan\\Downloads\\api-test3\\Superubezpieczenia\\Superubezpieczenia\\obj\\",
+      "projectPath": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\Superubezpieczenia.csproj",
+      "packagesPath": "C:\\Users\\aleks\\.nuget\\packages\\",
+      "outputPath": "D:\\api\\Superubezpieczenia\\Superubezpieczenia\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Szczepan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\aleks\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

@@ -38,7 +38,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPost]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult<TypeFuelDTO> AddTypeFuel(TypeFuelDTO typeFuelDTO)
+        public ActionResult<TypeFuelDTO> AddTypeFuel([FromBody] TypeFuelDTO typeFuelDTO)
         {
             var typeFuel = _mapper.Map<TypeFuel>(typeFuelDTO);
             _typeFuelService.AddTypeFuel(typeFuel);
@@ -62,7 +62,7 @@ namespace Superubezpieczenia.Controllers
         }
         [HttpPut("{id}")]
         [Authorize(Roles = UserRoles.Admin)]
-        public ActionResult UpdateTypeFuel(TypeFuelDTO typeFuelDTO, int id)
+        public ActionResult UpdateTypeFuel([FromBody] TypeFuelDTO typeFuelDTO, int id)
         {
             var uTypeFuel = _typeFuelService.FindById(id);
             if (uTypeFuel == null)

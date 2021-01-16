@@ -34,7 +34,7 @@ namespace Superubezpieczenia.Controllers
 
         }
         [HttpPost]
-        public ActionResult<InsuranceVM> AddInsurance(InsuranceDTO insuranceDTO)
+        public ActionResult<InsuranceVM> AddInsurance([FromBody] InsuranceDTO insuranceDTO)
         {
             var insurance = _mapper.Map<Insurance>(insuranceDTO);
             _insuranceService.AddInsurance(insurance);
@@ -56,7 +56,7 @@ namespace Superubezpieczenia.Controllers
 
         }
         [HttpPut("{id}")]
-        public ActionResult UpdateInsurance(InsuranceDTO insuranceDTO, int id)
+        public ActionResult UpdateInsurance([FromBody] InsuranceDTO insuranceDTO, int id)
         {
             var uInsurance = _insuranceService.FindById(id);
             if (uInsurance == null)
