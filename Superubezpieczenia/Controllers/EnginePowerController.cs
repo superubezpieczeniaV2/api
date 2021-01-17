@@ -42,7 +42,7 @@ namespace Superubezpieczenia.Controllers
             var enginepower = _mapper.Map<EnginePower>(enginepowerDTO);
             _enginePowerService.AddEnginePower(enginepower);
             _enginePowerService.SaveChanges();
-            _log.Save(User.Identity.Name, "Dodano rodzaj paliwa", GetType().Name);
+            _log.Save(User?.Identity.Name, "Dodano rodzaj paliwa", GetType().Name);
 
             return Ok();
 
@@ -58,7 +58,7 @@ namespace Superubezpieczenia.Controllers
             }
             _enginePowerService.DeleteEnginePower(dEnginePower);
             _enginePowerService.SaveChanges();
-            _log.Save(User.Identity.Name, "Usunięto rodzaj paliwa", GetType().Name);
+            _log.Save(User?.Identity.Name, "Usunięto rodzaj paliwa", GetType().Name);
             return Ok();
 
         }
@@ -74,7 +74,7 @@ namespace Superubezpieczenia.Controllers
             _mapper.Map(enginepowerDTO, uEnginePower);
             _enginePowerService.UpdateEnginePower(uEnginePower);
             _enginePowerService.SaveChanges();
-            _log.Save(User.Identity.Name, "Edytowano rodzaj paliwa", GetType().Name);
+            _log.Save(User?.Identity.Name, "Edytowano rodzaj paliwa", GetType().Name);
             return Ok();
         }
     }
