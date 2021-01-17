@@ -1,14 +1,4 @@
-version: '3'
-services:
- ms-sql-server:
-  image: mcr.microsoft.com/mssql/server:2019-latest
-  environment:
-   ACCEPT_EULA: "${ACCEPTING_EULA}"
-   SA_PASSWORD: "${DB_PW}"
-   MSSQL_PID: "${MS_SQL_PID}"
-  ports:
-   - "1433:1433"
- superubezpieczenia-api:
-  build: .
-  ports:
-   - "8080:80"
+superubezpieczenia-api:
+ build: .
+ ports:
+  - "8080:80"
