@@ -1,0 +1,35 @@
+# Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
+# More GitHub Actions for Azure: https://github.com/Azure/actions
+
+name: Build and deploy container app to Azure Web App - superubezpieczeniaDocker
+
+on:
+  push:
+    branches:
+      - serverv2
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: 'ubuntu-latest'
+
+    steps:
+    - uses: actions/checkout@master
+
+    - uses: azure/docker-login@v1
+      with:
+        login-server: https://index.docker.io/v1/
+        username: ${{ secrets.AzureAppService_ContainerUsername_a75dec5362be4a7c8f85770d8467d096 }}
+        password: ${{ secrets.AzureAppService_ContainerPassword_a786f37bbca54a11b7b71f2d9d96d144 }}
+
+    - run: |
+        docker build . -t index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a75dec5362be4a7c8f85770d8467d096 }}/szczepan123/superubezpieczenia_superubezpieczenia-api:${{ github.sha }}
+        docker push index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a75dec5362be4a7c8f85770d8467d096 }}/szczepan123/superubezpieczenia_superubezpieczenia-api:${{ github.sha }}
+
+    - name: Deploy to Azure Web App
+      uses: azure/webapps-deploy@v2
+      with:
+        app-name: 'superubezpieczeniaDocker'
+        slot-name: 'production'
+        publish-profile: ${{ secrets.AzureAppService_PublishProfile_5cd26f06a8434f10a10f74b987328183 }}
+        images: 'index.docker.io/${{ secrets.AzureAppService_ContainerUsername_a75dec5362be4a7c8f85770d8467d096 }}/szczepan123/superubezpieczenia_superubezpieczenia-api:${{ github.sha }}'
