@@ -43,7 +43,7 @@ namespace Superubezpieczenia.Controllers
             var owner = _mapper.Map<TypeOwner>(typeOwnerDTO);
             _ownerService.AddTypeOwner(owner);
             _ownerService.SaveChanges();
-            _log.Save(User.Identity.Name, "Dodano rodzaj właściciela", GetType().Name);
+            _log.Save(User?.Identity.Name, "Dodano rodzaj właściciela", GetType().Name);
             return Ok();
         }
         [HttpDelete("{id}")]
@@ -58,7 +58,7 @@ namespace Superubezpieczenia.Controllers
 
             _ownerService.DeleteTypeOwner(owner);
             _ownerService.SaveChanges();
-            _log.Save(User.Identity.Name, "Usunięto rodzaj właściciela", GetType().Name);
+            _log.Save(User?.Identity.Name, "Usunięto rodzaj właściciela", GetType().Name);
             return Ok();
         }
         [HttpPut("{id}")]
@@ -73,7 +73,7 @@ namespace Superubezpieczenia.Controllers
             _mapper.Map(typeOwnerDTO, owner);
             _ownerService.UpdateTypeOwner(owner);
             _ownerService.SaveChanges();
-            _log.Save(User.Identity.Name, "Edytowano rodzaj właściciela", GetType().Name);
+            _log.Save(User?.Identity.Name, "Edytowano rodzaj właściciela", GetType().Name);
             return Ok();
         }
       
