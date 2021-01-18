@@ -43,7 +43,7 @@ namespace Superubezpieczenia.Controllers
             var typeInsurance = _mapper.Map<TypeInsurance>(typeInsuranceDTO);
             _typeInsuranceService.AddTypeInsurance(typeInsurance);
             _typeInsuranceService.SaveChanges();
-           _log.Save(User?.Identity.Name, "Dodano rodzaj ubezpieczenia", GetType().Name);
+           _log.Save(User.Identity.Name, "Dodano rodzaj ubezpieczenia", GetType().Name);
             return Ok();
         }
         [HttpDelete("{id}")]
@@ -57,7 +57,7 @@ namespace Superubezpieczenia.Controllers
             }
             _typeInsuranceService.DeleteTypeInsurance(dTypeInsurance);
             _typeInsuranceService.SaveChanges();
-            _log.Save(User?.Identity.Name, "Usunięto rodzaj ubezpieczenia", GetType().Name);
+            _log.Save(User.Identity.Name, "Usunięto rodzaj ubezpieczenia", GetType().Name);
             return Ok();
         }
         [HttpPut("{id}")]
@@ -72,7 +72,7 @@ namespace Superubezpieczenia.Controllers
             _mapper.Map(typeInsuranceDTO, uTypeInsurance);
             _typeInsuranceService.UpdateTypeInsurance(uTypeInsurance);
             _typeInsuranceService.SaveChanges();
-            _log.Save(User?.Identity.Name, "Edytowano rodzaj ubezpieczenia", GetType().Name);
+            _log.Save(User.Identity.Name, "Edytowano rodzaj ubezpieczenia", GetType().Name);
             return Ok();
         }
     }
