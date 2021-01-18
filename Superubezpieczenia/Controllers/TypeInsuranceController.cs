@@ -43,7 +43,7 @@ namespace Superubezpieczenia.Controllers
             var typeInsurance = _mapper.Map<TypeInsurance>(typeInsuranceDTO);
             _typeInsuranceService.AddTypeInsurance(typeInsurance);
             _typeInsuranceService.SaveChanges();
-           _log.Save(User.Identity.Name, "Dodano rodzaj ubezpieczenia", GetType().Name);
+           _log.Save(User?.Identity.Name, "Dodano rodzaj ubezpieczenia", GetType().Name);
             return Ok();
         }
         [HttpDelete("{id}")]
